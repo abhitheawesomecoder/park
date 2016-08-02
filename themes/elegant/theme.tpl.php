@@ -64,7 +64,7 @@ curl_close($ch);
 <style>.backstretch, #bgimage, .Theme_Container { display:none; }</style>
 <? if($view == 'signup') { ?><style>#Theme_Content { background: #f4f4f4; margin-top: 3px; min-height: 100%; position: relative; }</style><? } ?>
 <? $views_match = $_GET['view']; if($views_match == 'login') { ?><script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script><? } else { if($views_match == 'signup') { ?><script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script><? } else { ?><script src="//code.jquery.com/jquery-1.6.2.min.js"></script><? } } ?>
-<script src="<?=$root;?>/themes/<?=$SETTINGS['theme'];?>/js/isotope.js" type="text/javascript"></script> 
+<script src="<?=$root;?>/themes/<?=$SETTINGS['theme'];?>/js/isotope.js" type="text/javascript"></script>
 <script src="<?=$root;?>/themes/<?=$SETTINGS['theme'];?>/js/cookie.js"></script>
 <style><? if($settings['theme']) {include($document.'/themes/'.$settings['theme'].'/color_picker.php'); } ?></style>
 <? if($SETTINGS['age_18'] == '1') { ?>
@@ -74,7 +74,7 @@ curl_close($ch);
 
 <body>
 <?=analytics;?>
-<div id="fb-root"></div> 
+<div id="fb-root"></div>
 
 
 <div id="Theme_Main_Box">
@@ -116,7 +116,7 @@ curl_close($ch);
 
 <style>
 #header-icon-menu {
-  
+
 }
 #header-icon {
   display: inline-block;
@@ -167,7 +167,7 @@ curl_close($ch);
 </div>
 
 <? } ?>
-</div>     
+</div>
 
 
 
@@ -185,9 +185,9 @@ curl_close($ch);
 <div class="widget-header"><h3 class="widget-title"><?=$LANG['TITLE_TOP_POSTS'];?></h3></div>
 <ul class="post-list-full">
 
-<? $SECTION['TOP_VOTES'] = mysql_query("SELECT news.news_id, news.title,news.type,news.thumb,news.file,news.cat,news.status, COUNT(votes.news_id) AS votes_news_id 
-  FROM votes 
-  LEFT JOIN news ON votes.news_id=news.id 
+<? $SECTION['TOP_VOTES'] = mysql_query("SELECT news.news_id, news.title,news.type,news.thumb,news.file,news.cat,news.status, COUNT(votes.news_id) AS votes_news_id
+  FROM votes
+  LEFT JOIN news ON votes.news_id=news.id
   GROUP BY votes.news_id
   ORDER BY votes_news_id DESC LIMIT 4"); while($SECTION_top_posts_ROW = mysql_fetch_array($SECTION['TOP_VOTES'])) { ?>
 <li class="item cf item-media">
@@ -197,7 +197,7 @@ curl_close($ch);
    if($SECTION_top_posts_ROW['type'] == 'gif') { echo '</a><div class="gif-post" style="border: 1px solid #fff;"><img class="gif-image animation" id='.$SECTION_top_posts_ROW['news_id'].' src='.$root."/uploads/media_photos/".$SECTION_top_posts_ROW['thumb'].' data-animation='.$root."/uploads/media_photos/".$SECTION_top_posts_ROW['file'].' data-original='.$root."/uploads/media_photos/".$SECTION_top_posts_ROW['thumb'].' data-state="0" width="150" /> <span class="play" style="line-height: 30px;font-size: 13px;height: 30px;width: 30px;">GIF</span></div>'; }
    if($SECTION_top_posts_ROW['type'] == 'vid') { echo '<div class="gif-post" style="border: 1px solid #fff;"><img src='.$root."/uploads/media_photos/".$SECTION_top_posts_ROW['file'].' width="150"><span class="play_video">VIDEO</span></a></div>'; } ?><span class="vertical-align"></span></span>
 </a>
-</div>				
+</div>
 <div class="data">
 	<h4 class="title"><a href="<?=$root;?><? $cat_query = mysql_query("SELECT * FROM categories WHERE id=".$SECTION_top_posts_ROW['cat'].""); $cat_row = mysql_fetch_row($cat_query); if($cat_row['2'] == '') { $cat_row = 'other'; }else{ $cat_row=$cat_row['2']; } if($SETTINGS['permalink'] == 'gag') { echo "/gag/".$SECTION_top_posts_ROW['news_id']; } elseif($SETTINGS['permalink'] == 'cat') { echo "/".$cat_row."/".$SECTION_top_posts_ROW['news_id']; } elseif($SETTINGS['permalink'] == 'cat_slugify') { echo "/".$cat_row."/".slugify($SECTION_top_posts_ROW['title']); } ?>"><?=$SECTION_top_posts_ROW['title'];?></a></h4>
 </div>
@@ -249,7 +249,17 @@ curl_close($ch);
       <div class="textarea">
       	<textarea name="description" id="nisgeo_post_textarea" placeholder="What's on your mind ?"></textarea>
       </div>
+
       <div class="post-footer">
+        <div style="display: inline-block;">
+         <input type="text" placeholder="Text input" style="float: left;">
+         <input type="text" placeholder="Text input" style="width: 90px;float: left;">
+         <select style="float: left;" >
+         <option value="volvo">EUR</option>
+         <option value="saab">USD</option>
+         <option value="mercedes">THB</option>
+        </select>
+        </div>
         <div class="clearfix">
           <div id="additional_footer">
             <div class="upload-button">
@@ -266,7 +276,7 @@ curl_close($ch);
             <li>
               <select id="nisgeo_post_category" name="nisgeo_post_category" style="height: 23px; font-size: 12px; padding-left: 5px; padding-top: 3px; width: 172px; margin: 0px; border-radius: 3px;border: 1px solid #ddd;">
                 <option><?=$LANG['Select_Category_title'];?>…</option>
-                <?  $option_cat_2 = get_option_cat(); 
+                <?  $option_cat_2 = get_option_cat();
                     foreach($option_cat_2 as $option_cat_2): ?>
                       <option value="<?=$option_cat_2['id']?>"><? if($session_lang == 'de') { echo $option_cat_2['name']; } elseif($session_lang == 'en') { echo $option_cat_2['name_en']; } elseif($session_lang == 'th') { echo $option_cat_2['name_th']; } ?></option>
                 <? endforeach; ?>
@@ -297,13 +307,13 @@ curl_close($ch);
 <div class="widget-header"><a href="<?php echo $root; ?>?view=users"><h3 class="widget-title" style="color: #000;"><?=$LANG['TITLE_TOP_AUTHORS'];?></h3></a></div>
 
 
-<? $SECTION['TOP_AUTHORS'] = mysql_query("SELECT users.id, users.oauth_provider, users.photo, users.first_name,users.last_name,users.username, COUNT(news.author) AS item_news 
-  FROM news 
-  LEFT JOIN users ON news.author=users.id 
+<? $SECTION['TOP_AUTHORS'] = mysql_query("SELECT users.id, users.oauth_provider, users.photo, users.first_name,users.last_name,users.username, COUNT(news.author) AS item_news
+  FROM news
+  LEFT JOIN users ON news.author=users.id
   GROUP BY news.author
   ORDER BY item_news DESC LIMIT 4"); while($SECTION_top_authors_ROW = mysql_fetch_array($SECTION['TOP_AUTHORS'])) { ?>
 <div class="top-author">
-          
+
 <div class="avatar-wrapper tooltip-advanced">
 <a href="<?=$root;?>/u/<?=str_replace(' ', '.', urldecode($SECTION_top_authors_ROW['username']));?>" class="avatar-author" title="<?=$SECTION_top_authors_ROW['username']?>" style="position: static;">
 <? if($SECTION_top_authors_ROW['oauth_provider'] == '') {?><img width="80" height="80" src="<?=$root;?>/uploads/avatars/<?=$SECTION_top_authors_ROW['photo']?>" alt="Avatar"><? }elseif($SECTION_top_authors_ROW['oauth_provider'] == 'facebook') {?><img width="80" height="80" src="<?=$SECTION_top_authors_ROW['photo']?>" alt="Avatar"><? }elseif($SECTION_top_authors_ROW['oauth_provider'] == 'twitter') {?><img width="80" height="80" src="<?=$root;?>/uploads/avatars/<?=$SECTION_top_authors_ROW['photo']?>" alt="Avatar"><? }?>
@@ -323,7 +333,7 @@ curl_close($ch);
 <center><ul>
 <? $FEATURED_POSTS = get_featured_posts();
    $i = 25;
-foreach(array_slice($FEATURED_POSTS, $startResults, $resultsPerPage) as $SECTION_featured_ROW): 
+foreach(array_slice($FEATURED_POSTS, $startResults, $resultsPerPage) as $SECTION_featured_ROW):
 ?>
 <li class="badge-featured-item" style="min-height: 106px;">
 <div class="img-container">
@@ -420,8 +430,8 @@ margin: 0 0 1.5em;
 </div>
 <?  }
     } ?>
-    
-    
+
+
 </div>
 
 
@@ -445,7 +455,7 @@ $(document).ready(function(){
 <?  if(($_COOKIE['age'] != '1')) {
 	if($SETTINGS['age_18'] == '1') { ?>
 $("#hidden_age_link").fancybox({
-	closeClick: false, // prevents closing when clicking INSIDE fancybox 
+	closeClick: false, // prevents closing when clicking INSIDE fancybox
     helpers: { overlay: { closeClick: false } }, // prevents closing when clicking OUTSIDE fancybox
     afterShow: function() {
         $(".fancybox-close").hide(); // hide close button
@@ -462,9 +472,9 @@ $(".form_ver_age").click(function(){
 });
 <?  }
     } ?>
-	
 
-    $('#logo').hover(function () { 
+
+    $('#logo').hover(function () {
         var $imgObj = $(this);
 
         // class name
@@ -496,19 +506,19 @@ $(".form_ver_age").click(function(){
 
             iRad+=2;
         }, 10);
-    }); 
+    });
 });
 
 
-function checkform() 
+function checkform()
 {
-if(document.myForm_Lost.lost_email.value == "") 
+if(document.myForm_Lost.lost_email.value == "")
 {
-    
+
 }
 else
 {
-	alert("<?=$LANG['alert_FORGOTPASSWORD_title'];?>."); 
+	alert("<?=$LANG['alert_FORGOTPASSWORD_title'];?>.");
     document.myForm_Lost.submit();
 }
 }
@@ -526,12 +536,12 @@ $(".thick").click(function(){
 });
 
 
-//<![CDATA[ 
+//<![CDATA[
 function getDocHeight(doc) {
     doc = doc || document;
     // from http://stackoverflow.com/questions/1145850/get-height-of-entire-document-with-javascript
     var body = doc.body, html = doc.documentElement;
-    var height = Math.max( body.scrollHeight, body.offsetHeight, 
+    var height = Math.max( body.scrollHeight, body.offsetHeight,
         html.clientHeight, html.scrollHeight, html.offsetHeight );
     return height;
     }
@@ -552,7 +562,7 @@ function getDocHeight(doc) {
             // here you can make the height, I delete it first, then I make it again
             iFrameID.height = "";
             iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
-      }   
+      }
   }
 
 $(document).ready(function() {
@@ -576,10 +586,10 @@ $(document).ready(function() {
 
 
 if ($(window).width() < 1280) {
-   $("#nis-comments").html("<iframe id='ifrm' onload='setIframeHeight(this.id)' scrolling='no' src='../sources/comments.php?nis_key="+nis_key+"&domain="+href+"&news_num="+news_num+"&news_id="+news_id+"&user_id="+user_id+"&theme="+theme+"' width='630' style='border: 0;'></iframe>");  
+   $("#nis-comments").html("<iframe id='ifrm' onload='setIframeHeight(this.id)' scrolling='no' src='../sources/comments.php?nis_key="+nis_key+"&domain="+href+"&news_num="+news_num+"&news_id="+news_id+"&user_id="+user_id+"&theme="+theme+"' width='630' style='border: 0;'></iframe>");
 }
 else {
-   $("#nis-comments").html("<iframe id='ifrm' onload='setIframeHeight(this.id)' scrolling='no' src='../sources/comments.php?nis_key="+nis_key+"&domain="+href+"&news_num="+news_num+"&news_id="+news_id+"&user_id="+user_id+"&theme="+theme+"' width='630' style='border: 0;'></iframe>");  
+   $("#nis-comments").html("<iframe id='ifrm' onload='setIframeHeight(this.id)' scrolling='no' src='../sources/comments.php?nis_key="+nis_key+"&domain="+href+"&news_num="+news_num+"&news_id="+news_id+"&user_id="+user_id+"&theme="+theme+"' width='630' style='border: 0;'></iframe>");
 }
 
 
@@ -588,7 +598,7 @@ else {
 
 
 <? if($_GET['view'] != 'login' && $_GET['view'] != 'signup') { ?>
-// Cache selectors outside callback for performance. 
+// Cache selectors outside callback for performance.
    var $window = $(window),
        $stickyEl = $('#nisid-featured-sidebar'),
        elTop = $stickyEl.offset().top;
@@ -641,7 +651,7 @@ $(document).ready(function () { $(".customize_wallpaper").fadeIn('slow'); $(".cu
 function showMe (box) {
         var chboxs = document.getElementsByName("source");
         var vis = "none";
-        for(var i=0;i<chboxs.length;i++) { 
+        for(var i=0;i<chboxs.length;i++) {
             if(chboxs[i].checked){
              vis = "block";
                 break;
@@ -654,7 +664,7 @@ function showMe (box) {
 
 //-->
 
-//]]>  
+//]]>
 (function(d, s, id) { var js, fjs = d.getElementsByTagName(s)[0]; if (d.getElementById(id)) return; js = d.createElement(s); js.id = id; js.src = "//connect.facebook.net/en_US/all.js#xfbml=1"; fjs.parentNode.insertBefore(js, fjs); }(document, 'script', 'facebook-jssdk'));
 
 /**
@@ -663,16 +673,16 @@ function showMe (box) {
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
 ;( function( window ) {
-	
+
 	'use strict';
 
 	function extend( a, b ) {
-		for( var key in b ) { 
+		for( var key in b ) {
 			if( b.hasOwnProperty( key ) ) {
 				a[key] = b[key];
 			}
