@@ -252,9 +252,9 @@ curl_close($ch);
 
       <div class="post-footer">
         <div style="display: inline-block;">
-         <input type="text" placeholder="Text input" style="float: left;">
-         <input type="text" placeholder="Text input" style="width: 90px;float: left;">
-         <select style="float: left;" >
+         <input type="text" id="nisgeo_post_title" placeholder="Your product title" style="float: left;border: 1px solid rgb(221, 221, 221);">
+         <input type="text" id="nisgeo_post_price" placeholder="Price" style="width: 90px;float: left;border: 1px solid rgb(221, 221, 221);">
+         <select id="nisgeo_post_currency" style="float: left;border: 1px solid rgb(221, 221, 221);" >
          <option value="volvo">EUR</option>
          <option value="saab">USD</option>
          <option value="mercedes">THB</option>
