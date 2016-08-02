@@ -59,6 +59,10 @@ function NISGEO_POST_BUTTON() {
 	var nisgeo_post_category = document.getElementById("nisgeo_post_category");
 	var category = nisgeo_post_category.options[nisgeo_post_category.selectedIndex].value;
 
+	var product_title = document.getElementById('nisgeo_post_title').value;
+	var product_price = document.getElementById('nisgeo_post_price').value;
+	var product_currency = document.getElementById('nisgeo_post_currency').value;
+
 	// SELECT Images, Image url, Video url information
 	if (document.getElementById('nisgeo_post_image') != null) {
 	    var images = document.getElementById("nisgeo_post_image").value;
@@ -75,6 +79,22 @@ function NISGEO_POST_BUTTON() {
 	} else {
 	    var video_url = null;
 	}
+
+	// validate product title price and currency
+
+	if(product_title == '') {
+		alert("Please enter product title");
+		$(".inner-loader").css("display", "none");
+		return false;
+	} else {
+		if(product_price == '') {
+			alert("Please enter product price");
+			$(".inner-loader").css("display", "none");
+			return false;
+		}
+
+	}
+
 
 	// SELECT Tab Selectors
 

@@ -252,9 +252,9 @@ curl_close($ch);
 
       <div class="post-footer">
         <div style="display: inline-block;">
-         <input type="text" id="nisgeo_post_title" placeholder="Your product title" style="float: left;border: 1px solid rgb(221, 221, 221);">
-         <input type="text" id="nisgeo_post_price" placeholder="Price" style="width: 90px;float: left;border: 1px solid rgb(221, 221, 221);">
-         <select id="nisgeo_post_currency" style="float: left;border: 1px solid rgb(221, 221, 221);" >
+         <input type="text" name="product_title" id="nisgeo_post_title" placeholder="Your product title" style="float: left;border: 1px solid rgb(221, 221, 221);">
+         <input type="text" name="product_price" id="nisgeo_post_price" placeholder="Price" style="width: 90px;float: left;border: 1px solid rgb(221, 221, 221);">
+         <select name="product_currency" id="nisgeo_post_currency" style="float: left;border: 1px solid rgb(221, 221, 221);" >
          <option value="volvo">EUR</option>
          <option value="saab">USD</option>
          <option value="mercedes">THB</option>
@@ -283,7 +283,7 @@ curl_close($ch);
               </select>
             </li>
             <li>
-              <button onclick="NISGEO_POST_BUTTON();" class="post-button" type="submit">Post</button>
+              <button onclick="NISGEO_POST_BUTTON();" class="post-button" type="submit">Sell now!</button>
             </li>
           </ul>
         </div>
