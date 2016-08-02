@@ -1,0 +1,50 @@
+<?php
+$LANG['overview_title'] = "PŘEHLED";
+$LANG['posts_title'] = "POLOŽKY";
+$LANG['upvotes_title'] = "UP HLASOVÁNÍ";
+$LANG['comments_title'] = "KOMENTÁŘE";
+$LANG['has_hidden_profile'] = "mít skrytý profil.";
+$LANG['go_to_your_profile'] = "Přejděte do svého profilu";
+$LANG['upvoted_and'] = "hlasovalo se";
+$LANG['commented'] = "komentoval";
+$LANG['upvoted'] = "up hlasování";
+$LANG['posts_show_up'] = "Položky";
+$LANG['upvoted_and_commented_will_show_up_here'] = "hlasování a komentáře, se zobrazí zde";
+$LANG['checkout_whats_hot'] = "Zkontroluj co je nového";
+$LANG['uploaded_will_show_up_here'] = "nahrané se budou zobrazovat zde";
+$LANG['upvoted_will_show_up_here'] = "hlasování se budou zobrazovat zde";
+$LANG['commented_will_show_up_here'] = "komentáře se budou zobrazovat zde";
+
+// SETTINGS
+$LANG['if_you_are_registered_with_social_networks'] = "Jste-li registrováni u sociálních sítí, můžete změnit své údaje v sociální síti.";
+$LANG['Username_title'] = "Uživatelské jméno";
+$LANG['Email_title'] = "E-mail";
+$LANG['Email_will_not_be_displayed_publicly'] = "E-mail nebude zobrazen veřejně";
+$LANG['Hidden_profile_title'] = "Skrytý profil";
+$LANG['Hide_my_profile_to_others'] = "Skrýt můj profil u ostatních";
+$LANG['save_changes_title'] = "Uložit změny";
+$LANG['Delete_my_account'] = "Smazat můj účet";
+$LANG['Password_title'] = "Heslo";
+$LANG['Password_settings_has_been_saved'] = "Nastavení hesla bylo uloženo";
+$LANG['old_password_title'] = "Staré heslo";
+$LANG['new_password_title'] = "Nové heslo";
+$LANG['re_type_new_password_title'] = "Opakuj nové heslo";
+$LANG['Profile_title'] = "Profil";
+$LANG['Profile_settings_has_been_saved'] = "Nastavení profilu bylo uloženo";
+$LANG['Avatar_title'] = "Avatar";
+$LANG['your_first_name_title'] = "Vaše Jméno";
+$LANG['your_last_name_title'] = "Vaše příjmení";
+$LANG['This_is_the_name_that_will_be_visible'] = "To je jméno, které bude viditelné pro ostatní uživatele na internetových stránkách";
+$LANG['Gender_title'] = "Pohlaví";
+$LANG['Select_Gender_title'] = "Vyberte Pohlaví";
+$LANG['Female_title'] = "Žena";
+$LANG['Male_title'] = "Muž";
+$LANG['Unspecified_title'] = "Nespecifikováno";
+$LANG['Birthday_title'] = "Narozeniny";
+$LANG['Country_title'] = "Země";
+$LANG['Tell_us_where_you_are_from'] = "Řekněte nám, odkud jste přišli, abychom mohli poskytovat lepší služby pro vás";
+$LANG['Account_subtitle'] = "Účet";
+$LANG['Password_subtitle'] = "Heslo";
+$LANG['Profile_subtitle'] = "Profil";
+$LANG['jpg_gif_png_max_size_title'] = "JPG, GIF nebo PNG, max. velikost: 2MB";
+?>

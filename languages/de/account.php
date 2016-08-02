@@ -1,0 +1,50 @@
+<?php
+$LANG['overview_title'] = "PROFIL";
+$LANG['posts_title'] = "BEITRÄGE";
+$LANG['upvotes_title'] = "FAVORITEN";
+$LANG['comments_title'] = "KOMMENTARE";
+$LANG['has_hidden_profile'] = "hat das Profil versteckt.";
+$LANG['go_to_your_profile'] = "Mein Profil";
+$LANG['upvoted_and'] = "Bewertet und";
+$LANG['commented'] = "kommentiert";
+$LANG['upvoted'] = "Mein Favorit";
+$LANG['posts_show_up'] = "Posts";
+$LANG['upvoted_and_commented_will_show_up_here'] = "'s Lieblingsbeiträge.";
+$LANG['checkout_whats_hot'] = "Neue Beiträge anschauen";
+$LANG['uploaded_will_show_up_here'] = "'s Beiträge und Favoriten.";
+$LANG['upvoted_will_show_up_here'] = "hat momentan noch keine Favoriten.";
+$LANG['commented_will_show_up_here'] = "hat noch keine Beiträge kommentiert.";
+
+// SETTINGS
+$LANG['if_you_are_registered_with_social_networks'] = "Wenn du mit einem sozialen Netzwerk registriert bist,<br>kannst du deine Informationen im sozialen Netzwerke ändern.";
+$LANG['Username_title'] = "Benutzername";
+$LANG['Email_title'] = "eMail";
+$LANG['Email_will_not_be_displayed_publicly'] = "eMail wird nicht öffentlich gezeigt";
+$LANG['Hidden_profile_title'] = "Mein Profil verbergen";
+$LANG['Hide_my_profile_to_others'] = "Mein Profil für andere Benutzer verbergen";
+$LANG['save_changes_title'] = "Änderungen speichern";
+$LANG['Delete_my_account'] = "Meinen Account löschen";
+$LANG['Password_title'] = "Passwort";
+$LANG['Password_settings_has_been_saved'] = "Passwort wurde geändert!";
+$LANG['old_password_title'] = "Altes Passwort:";
+$LANG['new_password_title'] = "Neues Passwort:";
+$LANG['re_type_new_password_title'] = "Passwort bestätigen:";
+$LANG['Profile_title'] = "Profil";
+$LANG['Profile_settings_has_been_saved'] = "Deine Einstellungen wurden gespeichert!";
+$LANG['Avatar_title'] = "Avatar";
+$LANG['your_first_name_title'] = "Vorname::";
+$LANG['your_last_name_title'] = "Nachname:";
+$LANG['This_is_the_name_that_will_be_visible'] = "Der Name, welcher für andere Benutzer sichtbar auf der Webseite sein wird.";
+$LANG['Gender_title'] = "Geschlecht:";
+$LANG['Select_Gender_title'] = "Geschlecht auswählen";
+$LANG['Female_title'] = "weiblich";
+$LANG['Male_title'] = "männlich";
+$LANG['Unspecified_title'] = "sonstiges";
+$LANG['Birthday_title'] = "Geburtsdatum";
+$LANG['Country_title'] = "Land";
+$LANG['Tell_us_where_you_are_from'] = "Sag uns, wie du von Thaipark erfahren hast";
+$LANG['Account_subtitle'] = "Account";
+$LANG['Password_subtitle'] = "Passwort";
+$LANG['Profile_subtitle'] = "Profil";
+$LANG['jpg_gif_png_max_size_title'] = "JPG, GIF or PNG, Max. Größe: 300KB";
+?>

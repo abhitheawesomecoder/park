@@ -1,0 +1,50 @@
+<?php
+$LANG['overview_title'] = "OVERVIEW";
+$LANG['posts_title'] = "POSTS";
+$LANG['upvotes_title'] = "UPVOTES";
+$LANG['comments_title'] = "COMMENTS";
+$LANG['has_hidden_profile'] = "has hidden profile.";
+$LANG['go_to_your_profile'] = "Go to your profile";
+$LANG['upvoted_and'] = "upvoted and";
+$LANG['commented'] = "commented";
+$LANG['upvoted'] = "upvoted";
+$LANG['posts_show_up'] = "Posts";
+$LANG['upvoted_and_commented_will_show_up_here'] = "upvoted and commented will show up here";
+$LANG['checkout_whats_hot'] = "Checkout What's Hot";
+$LANG['uploaded_will_show_up_here'] = "uploaded will show up here";
+$LANG['upvoted_will_show_up_here'] = "upvoted will show up here";
+$LANG['commented_will_show_up_here'] = "commented will show up here";
+
+// SETTINGS
+$LANG['if_you_are_registered_with_social_networks'] = "If you are registered with social networks, you can change your information in social network.";
+$LANG['Username_title'] = "Username";
+$LANG['Email_title'] = "Email";
+$LANG['Email_will_not_be_displayed_publicly'] = "Email will not be displayed publicly";
+$LANG['Hidden_profile_title'] = "Hidden profile";
+$LANG['Hide_my_profile_to_others'] = "Hide my profile to others";
+$LANG['save_changes_title'] = "Save Changes";
+$LANG['Delete_my_account'] = "Delete my account";
+$LANG['Password_title'] = "Password";
+$LANG['Password_settings_has_been_saved'] = "Password settings has been saved";
+$LANG['old_password_title'] = "Old Password";
+$LANG['new_password_title'] = "New Password";
+$LANG['re_type_new_password_title'] = "Re-type New Password";
+$LANG['Profile_title'] = "Profile";
+$LANG['Profile_settings_has_been_saved'] = "Profile settings has been saved";
+$LANG['Avatar_title'] = "Avatar";
+$LANG['your_first_name_title'] = "Your First Name";
+$LANG['your_last_name_title'] = "Your Last Name";
+$LANG['This_is_the_name_that_will_be_visible'] = "This is the name that will be visible to other users on website";
+$LANG['Gender_title'] = "Gender";
+$LANG['Select_Gender_title'] = "Select Gender";
+$LANG['Female_title'] = "Female";
+$LANG['Male_title'] = "Male";
+$LANG['Unspecified_title'] = "Unspecified";
+$LANG['Birthday_title'] = "Birthday";
+$LANG['Country_title'] = "Country";
+$LANG['Tell_us_where_you_are_from'] = "Tell us where you're from so we can provide better service for you";
+$LANG['Account_subtitle'] = "Account";
+$LANG['Password_subtitle'] = "Password";
+$LANG['Profile_subtitle'] = "Profile";
+$LANG['jpg_gif_png_max_size_title'] = "JPG, GIF or PNG, Max size: 2MB";
+?>

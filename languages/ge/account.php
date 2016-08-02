@@ -1,0 +1,50 @@
+<?php
+$LANG['overview_title'] = "ქრონიკა";
+$LANG['posts_title'] = "პოსტები";
+$LANG['upvotes_title'] = "შეფასებები";
+$LANG['comments_title'] = "კომენტარები";
+$LANG['has_hidden_profile'] = "აქვს დახურული პროფილი.";
+$LANG['go_to_your_profile'] = "გადადით თქვენს პროფილში";
+$LANG['upvoted_and'] = "შეაფასა და";
+$LANG['commented'] = "დააკომენტარა";
+$LANG['upvoted'] = "შეაფასა";
+$LANG['posts_show_up'] = "პოსტები, რომელიც";
+$LANG['upvoted_and_commented_will_show_up_here'] = "შეაფასა და დააკომენტარა გამოჩნდება აქ";
+$LANG['checkout_whats_hot'] = "შეამოწმეთ აქტუალური";
+$LANG['uploaded_will_show_up_here'] = "ატვირთა გამოჩნდება აქ";
+$LANG['upvoted_will_show_up_here'] = "შეაფასა გამოჩნდება აქ";
+$LANG['commented_will_show_up_here'] = "დააკომენტარა გამოჩნდება აქ";
+
+// SETTINGS
+$LANG['if_you_are_registered_with_social_networks'] = "თუ თქვენ ხართ დარეგისტრირებული სოციალური ქსელებით, თქვენი შეგიძლიათ შეცვალოთ თქვენი ინფორმაცია სოციალურ ქსელში.";
+$LANG['Username_title'] = "ზედმეტსახელი";
+$LANG['Email_title'] = "ელ-ფოსტა";
+$LANG['Email_will_not_be_displayed_publicly'] = "თქვენი ელ-ფოსტა არ გამოჩნდება საზოგადოდ";
+$LANG['Hidden_profile_title'] = "დახურული პროფილი";
+$LANG['Hide_my_profile_to_others'] = "დახურეთ პროფილი სხვებისთვის";
+$LANG['save_changes_title'] = "შენახვა";
+$LANG['Delete_my_account'] = "წაშალეთ ჩემი ანგარიში";
+$LANG['Password_title'] = "პაროლი";
+$LANG['Password_settings_has_been_saved'] = "პაროლის პარამეტრები შენახულია";
+$LANG['old_password_title'] = "ძველი პაროლი";
+$LANG['new_password_title'] = "ახალი პაროლი";
+$LANG['re_type_new_password_title'] = "გაიმეორეთ ახალი პაროლი";
+$LANG['Profile_title'] = "პროფილი";
+$LANG['Profile_settings_has_been_saved'] = "პროფილის პარამეტრები შენახულია";
+$LANG['Avatar_title'] = "პროფილის ფოტო";
+$LANG['your_first_name_title'] = "თქვენი სახელი";
+$LANG['your_last_name_title'] = "თქვენი გვარი";
+$LANG['This_is_the_name_that_will_be_visible'] = "თქვენი სახელი და გვარი გამოჩნდება საზოგადოდ სხვა მომხმარებლებისთვის";
+$LANG['Gender_title'] = "სქესი";
+$LANG['Select_Gender_title'] = "აირჩიეთ სქესი";
+$LANG['Female_title'] = "ქალი";
+$LANG['Male_title'] = "მამაკაცი";
+$LANG['Unspecified_title'] = "გაურკვეველი";
+$LANG['Birthday_title'] = "დაბადების თარიღი";
+$LANG['Country_title'] = "ქვეყანა";
+$LANG['Tell_us_where_you_are_from'] = "გვითხარით ჩვენ, რათა მოგაწოდოთ უფრო კარგი სერვისი თქვენ.";
+$LANG['Account_subtitle'] = "ანგარიში";
+$LANG['Password_subtitle'] = "პაროლი";
+$LANG['Profile_subtitle'] = "პროფილი";
+$LANG['jpg_gif_png_max_size_title'] = "JPG, GIF ან PNG, მაქს. ზომა: 2MB";
+?>

@@ -1,0 +1,240 @@
+/*
+	Plugin name: Post Plugin for Mouse Media Script
+	Plugin description: You can simply post texts, images, videos
+	Plugin author: NISGEO
+	Plugin url: http://www.nisgeo.com/
+*/
+#nisgeo-post {
+  width: 630px;
+  padding: 5px;
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  background: #F0F0F0;
+  border: 1px solid #e0e0e0;
+  -webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  -moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+}
+#nisgeo-post .inner-block {
+  background-color: #fff;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+}
+#nisgeo-post .inner-block .inner-loader {
+  background: rgba(240, 240, 240, 0.7);
+  width: 630px;
+  height: 137px;
+  position: absolute;
+  z-index: 999;
+  text-align: center;
+  display: none;
+}
+#nisgeo-post .inner-block .inner-loader img {
+  margin-top: 65px;
+}
+.clearfix {
+  zoom: 1;
+}
+#nisgeo-post .inner-block .inner-list {
+  border-bottom: 1px solid #e5e5e5;
+  background: rgba(240, 240, 240, 0.5);
+  height: 26px;
+  margin: 0;
+  padding: 4px 0 2px;
+  position: relative;
+  z-index: 1;
+  list-style-type: none;
+}
+#nisgeo-post .inner-block .inner-list li:first-child {
+  padding-left: 0;
+  border-width: 0;
+}
+#nisgeo-post .inner-block .inner-list li {
+  padding-right: 0;
+  margin-left: 5px;
+  position: relative;
+  vertical-align: top;
+  display: inline-block;
+}
+#nisgeo-post .inner-block .inner-list li a {
+  font-family: arial, sans-serif;
+  line-height: 12px;
+  padding: 5px 6px 3px 12px;
+  position: relative;
+  display: block;
+  font-weight: bold;
+  cursor: pointer;
+}
+#nisgeo-post .inner-block .inner-list li a.active {
+  color: #333;
+  cursor: default;
+  text-decoration: none;
+}
+#nisgeo-post .inner-block .inner-list li a span.text {
+  padding: 0px 10px;
+  display: inline-block;
+  position: relative;
+}
+#nisgeo-post .inner-block .inner-list li a.active span.text .arrow {
+  background-image: url(images/arrow.png);
+  background-repeat: no-repeat;
+  background-size: auto;
+  height: 6px;
+  width: 11px;
+  position: absolute;
+  left: 50%;
+  margin-left: -3px;
+  top: 18px;
+}
+#nisgeo-post .inner-block .inner-list li .inner-post {
+  display: inline-block;
+  position: relative;
+}
+#nisgeo-post .inner-block .textarea textarea#nisgeo_post_textarea {
+  min-height: 63px;
+  padding-top: 18px;
+  padding: 8px 7px 0 12px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 18px;
+  font-family: arial, sans-serif;
+  background-color: transparent;
+  border: 0;
+  -webkit-box-sizing: border-box;
+  outline: 0;
+  width: 100%;
+  resize: none;
+  vertical-align: bottom;
+  overflow: hidden;
+  max-width: 100%;
+  -webkit-appearance: none;
+  -webkit-border-radius: 0;
+}
+#nisgeo-post .inner-block .post-footer {
+  border-top-color: #e9eaed;
+  -webkit-border-radius: 0 0 3px 3px;
+  border-top: 1px solid #e6e6e6;
+  background: rgba(240, 240, 240, 0.5);
+  height: 40px;
+}
+#nisgeo-post .inner-block .post-footer #additional_footer {
+  float: left;
+}
+#nisgeo-post .inner-block .post-footer #additional_footer .file {
+  width: 93px;
+  margin-top: 9px;
+  margin-left: 18px;
+}
+#nisgeo-post .inner-block .post-footer ul.footer-list {
+  margin: 8px;
+  float: right;
+  list-style-type: none;
+  padding: 0;
+}
+#nisgeo-post .inner-block .post-footer ul.footer-list li .post-button {
+  font-family: helvetica, arial, sans-serif;
+  background-color: #2D72D9;
+  border-color: #435a8b #3c5488 #334c83;
+  font-size: 12px;
+  line-height: 22px;
+  padding: 0 16px;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+  border: 1px solid;
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  -webkit-box-sizing: content-box;
+  font-family: helvetica, arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  white-space: nowrap;
+  margin: 0;
+}
+#nisgeo-post .inner-block .post-footer ul.footer-list li {
+  padding-left: 10px;
+  padding-right: 10px;
+  vertical-align: top;
+  border-width: 0 0 0 1px;
+  display: inline-block;
+}
+#nisgeo-post .inner-block .post-footer #additional_footer .upload-button {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  left: 18px;
+  top: -5px;
+
+}
+#nisgeo-post .inner-block .post-footer #additional_footer .upload-button a {
+  position: absolute;
+  font-family: helvetica, arial, sans-serif;
+  outline: none;
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  text-align: center;
+  zoom: 1;
+}
+#nisgeo-post .inner-block .post-footer #additional_footer .upload-button a button {
+  font-family: arial, sans-serif;
+  font-size: 12px;
+  line-height: 23px;
+  padding: 0 24px;
+  background-color: #6bb933;
+  border-color: #60a62e #519f18 #409701;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, .2);
+  border: 1px solid;
+  -webkit-border-radius: 2px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+  -webkit-box-sizing: content-box;
+  -webkit-font-smoothing: antialiased;
+  font-weight: bold;
+  position: relative;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+  white-space: nowrap;
+  margin: 0;
+}
+#nisgeo-post .inner-block .post-footer #additional_footer .upload-button .hidden-file {
+  opacity: 0;
+  position: absolute;
+  top: 0px;
+  left: 1px;
+  width: 122px;
+  height: 23px;
+}
+#count_files {
+  display: none;
+  font-family: arial, sans-serif;
+  font-weight: normal;
+  font-size: 12px;
+  color: #2D72D9;
+  width: 100px;
+  position: absolute;
+  top: 6px;
+  left: 135px;
+}
+.count_files {
+  float:left;
+  font-weight:bold;
+}
+.count_text {
+  float:left;
+  margin-left: 3px;
+}

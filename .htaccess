@@ -1,0 +1,37 @@
+DirectoryIndex index.php
+RewriteEngine On
+
+RewriteRule ^1aWtPdaeKwG(.*)-(.*) /themes/$1/files.php?type=css&files=$2
+RewriteRule ^00cv6P016Bz(.*)-(.*) /themes/$1/files.php?type=javascript&files=$2
+RewriteRule ^images_(.*)/(.*)(.*)  /themes/$1/images/$2    [NC,L]
+
+RewriteRule ^rss$ ./sources/rss.php
+RewriteRule ^sitemap.xml$ ./sources/sitemap.php
+
+
+RewriteRule    ^gag/([^/.]+)/?$    index.php?view=news&id=$1    [NC,L]
+
+
+RewriteRule    ^gag/delete/([^/.]+)/?$    index.php?view=delete_news&news_id=$1    [NC,L]
+
+RewriteRule    ^([A-Za-z0-9-]+)/?$    index.php?view=cat&cat=$1    [NC,L]
+
+RewriteRule    ^view/([^/.]+)/?$    index.php?view=$1    [L]
+RewriteRule    ^view/([^/.]+)/([0-9]+)?$    index.php?view=$1&background=$2    [L]
+RewriteRule    ^view/([^/.]+)/([^/.]+)?$    index.php?view=$1&action=$2    [L]
+RewriteRule    ^view/([^/.]+)/([^/.]+)/([0-9]+)?$    index.php?view=$1&action=$2&page=$3    [L]
+RewriteRule    ^view/([^/.]+)/([^/.]+)/([0-9]+)?$    index.php?view=$1&action=$2&subaction=$3    [L]
+RewriteRule    ^view/([^/.]+)/([^/.]+)/([^/.]+)/([^/.]+)?$    index.php?view=$1&action=$2&subaction=$3&id=$4    [L]
+RewriteRule    ^u/(.*)/([^/.]+)/?$    index.php?view=account&action=profile&profile=$1&subaction=$2    [L]
+RewriteRule    ^u/(.*)    index.php?view=account&action=profile&profile=$1    [L]
+RewriteRule    ^user/settings?$    index.php?view=account&action=settings    [L]
+RewriteRule    ^user/settings/([^/.]+)?$    index.php?view=account&action=settings&subaction=$1    [L]
+RewriteRule    ^view/meme/action/([^/.]+)?$    index.php?view=meme&action=$1    [L]
+RewriteRule    ^view/meme/action/create/(.*)?$    index.php?view=meme&action=create&t=$1    [L]
+RewriteRule    ^view/meme/action/create/image/display(.*)?$    index.php?view=meme&action=create&t=$1    [L]
+RewriteRule    ^view/meme/action/show/c/([^/.]+)?$    index.php?view=meme&action=show&c=$1    [L]
+RewriteRule    ^view/upload/meme/post_url/num/([^/.]+)?$    index.php?view=upload&post_url=$1    [L]
+RewriteRule    ^member/delete/?$    index.php?view=delete_account    [L]
+RewriteRule    ^pages/([^/.]+)?$    index.php?view=pages&id=$1    [L]
+
+RewriteRule    ^([^/.]+)/([^/.]+)/?$    index.php?view=news&cat=$1&id=$2    [NC,L]
