@@ -15,15 +15,18 @@ include_once ('functions.php');
 include_once ('random_functions.php');
 
 // Session Member Info
-$members = get_members($id);	
-$settings = get_settings();	
+$members = get_members($id);
+$settings = get_settings();
 
+$product_title = $_REQUEST["product_title"];
+$product_price = $_REQUEST["product_price"];
+$product_currency = $_REQUEST["product_currency"];
 
 if($members['username'] != '') {
 	if($_REQUEST['tab_selector'] == 'nisgeo_post_tab_1') {
 	  $rand = $rand;
-	  $url_REQUEST = mysql_real_escape_string($_REQUEST['img_url']); 
-	  $title = mysql_real_escape_string($_REQUEST['description']); 
+	  $url_REQUEST = mysql_real_escape_string($_REQUEST['img_url']);
+	  $title = mysql_real_escape_string($_REQUEST['description']);
 	  $url = $_REQUEST['img_url'];
 	  $category = $_REQUEST['nisgeo_post_category'];
 	  $source = $_REQUEST['img_source'];
@@ -36,13 +39,13 @@ if($members['username'] != '') {
 		$size = $_FILES['photoimg']['size'];
 		$media_type = 'pic';
 	  	if($title && $category){
-	  		
+
 					if($settings['upload_type'] == 'pend') {
 						$status = 'off';
 					} elseif($settings['upload_type'] == 'auto') {
 						$status = 'on';
 					}
-					
+
 			for($i=0; $i < 11; $i++){
 				$seed_second = str_split('abcdefghijklmnopqrstuvwxyz'.'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.'0123456789');
 				shuffle($seed_second);
@@ -68,29 +71,29 @@ if($members['username'] != '') {
 
 			$mouse_multiple_sql = mysql_query("SELECT * FROM mouse_multiple WHERE post_id = '".$rand."' LIMIT 1");
 			$mouse_multiple = mysql_fetch_array($mouse_multiple_sql);
-			
+
 			$url_name = $mouse_multiple['file_name'];
 
 			create_thumb("../uploads/media_photos/".$mouse_multiple['file_name'], "../uploads/media_photos/"."thumb_".$mouse_multiple['file_name'], 630);
 
-			$result = mysql_query("INSERT INTO news (news_id, title, type, thumb, file, source, cat, author, description, date, status) 
-		                       VALUES ('".$rand."','".$title."','".$media_type."','".$name_media_gif."','".$url_name."','".$source."','".$category."','".$members['id']."','".$description."','".date("Y-m-d")."','".$status."')"); 
-		    
+			$result = mysql_query("INSERT INTO news (news_id, title, type, thumb, file, source, cat, author, description, date, status, product_title, product_price, product_currency)
+		                       VALUES ('".$rand."','".$title."','".$media_type."','".$name_media_gif."','".$url_name."','".$source."','".$category."','".$members['id']."','".$description."','".date("Y-m-d")."','".$status."','".$product_title."','".$product_price."','".$product_currency."')");
+
 		    $data = array(
 			  				'SUCCESS_SESSION' => "1"
 			  			 );
-			  	
+
 			echo json_encode($data, JSON_PRETTY_PRINT);
 		}
 	}
 	elseif($_REQUEST['tab_selector'] == 'nisgeo_post_tab_2') {
-		$url = filter(mysql_real_escape_string($_POST['url'])); 
-      	$title = filter(mysql_real_escape_string($_POST['description'])); 
+		$url = filter(mysql_real_escape_string($_POST['url']));
+      	$title = filter(mysql_real_escape_string($_POST['description']));
 	  	$url = filter($_POST['url']);
 	  	$category = filter($_POST['nisgeo_post_category']);
 	  	$source = filter($_POST['source']);
 	  	$description = filter(mysql_real_escape_string($_POST['description']));
-	  
+
 	  	$name = basename($url);
 	  	list($txt, $ext) = explode(".", $name);
 	  	$name = $txt.time();
@@ -118,8 +121,8 @@ if($members['username'] != '') {
 						create_thumb("../uploads/media_photos/".$name, "../uploads/media_photos/"."thumb_".$name, 630);
 					}
 
-					$result = mysql_query("INSERT INTO news (news_id, title, type, thumb, file, source, cat, author, description, date, status) 
-                       VALUES ('".$rand."','".$title."','".$media_type."','".$name_media_gif."','".$name."','".$source."','".$category."','".$members['id']."','".$description."','".date("Y-m-d")."','".$status."')"); 
+					$result = mysql_query("INSERT INTO news (news_id, title, type, thumb, file, source, cat, author, description, date, status, product_title, product_price, product_currency)
+                       VALUES ('".$rand."','".$title."','".$media_type."','".$name_media_gif."','".$name."','".$source."','".$category."','".$members['id']."','".$description."','".date("Y-m-d")."','".$status."','".$product_title."','".$product_price."','".$product_currency."')");
         		    //print success message.
         		    $data = array(
 			  				'SUCCESS_SESSION' => "1"
@@ -136,7 +139,7 @@ if($members['username'] != '') {
 	elseif($_REQUEST['tab_selector'] == 'nisgeo_post_tab_3') {
 		$media = http_decode(trim($_POST['video_url']));
 	  	$type = getdomain($media);
-      	$title = mysql_real_escape_string($_POST['description']); 
+      	$title = mysql_real_escape_string($_POST['description']);
 	  	$category = $_POST['nisgeo_post_category'];
 	  	$source = $_POST['video_source'];
 	 	$description = mysql_real_escape_string($_POST['description']);
@@ -153,15 +156,15 @@ if($members['username'] != '') {
 		    $media_type = "vid";
 			$url=get_vine_photo($media);
 	  	}
-	  
+
 	  	$name = basename($url);
 	  	list($txt, $ext) = explode(".", $name);
 	  	$name = $txt.time();
 	  	$name = $name.".".$ext;
-				
-	  	$upload = file_put_contents("../uploads/media_photos/$name",file_get_contents($url));		
-				
-				
+
+	  	$upload = file_put_contents("../uploads/media_photos/$name",file_get_contents($url));
+
+
 		if($upload) {
 	  			if($title && $media_type && $name && $category){
 					if($settings['upload_type'] == 'pend') {
@@ -172,8 +175,8 @@ if($members['username'] != '') {
 
 					create_thumb("../core/uploads/media_photos/".$name, "../core/uploads/media_photos/"."thumb_".$name, 300);
 
-					$result = mysql_query("INSERT INTO news (news_id, title, type, thumb, file, source, cat, author, description, date, status) 
-                       VALUES ('".$rand."','".$title."','vid','".$media."','".$name."','".$source."','".$category."','".$members['id']."','".$description."','".date("Y-m-d")."','".$status."')"); 
+					$result = mysql_query("INSERT INTO news (news_id, title, type, thumb, file, source, cat, author, description, date, status, product_title, product_price, product_currency)
+                       VALUES ('".$rand."','".$title."','vid','".$media."','".$name."','".$source."','".$category."','".$members['id']."','".$description."','".date("Y-m-d")."','".$status."','".$product_title."','".$product_price."','".$product_currency."')");
         			//print success message.
 					$data = array(
 			  				'SUCCESS_SESSION' => "1"
@@ -194,7 +197,7 @@ if($members['username'] != '') {
 	$data = array(
 	  				'ERROR_SESSION' => "1"
 	  			 );
-	  	
+
 	echo json_encode($data, JSON_PRETTY_PRINT);
 }
 

@@ -255,9 +255,9 @@ curl_close($ch);
          <input type="text" name="product_title" id="nisgeo_post_title" placeholder="Your product title" style="float: left;border: 1px solid rgb(221, 221, 221);">
          <input type="text" name="product_price" id="nisgeo_post_price" placeholder="Price" style="width: 90px;float: left;border: 1px solid rgb(221, 221, 221);">
          <select name="product_currency" id="nisgeo_post_currency" style="float: left;border: 1px solid rgb(221, 221, 221);" >
-         <option value="volvo">EUR</option>
-         <option value="saab">USD</option>
-         <option value="mercedes">THB</option>
+         <option value="EUR">EUR</option>
+         <option value="USD">USD</option>
+         <option value="THB">THB</option>
         </select>
         </div>
         <div class="clearfix">
