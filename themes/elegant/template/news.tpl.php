@@ -46,11 +46,11 @@
 		<div style="height: 50px;">
 
 			<div style="float:left">
-				Payment By
+				Payment By: Paypal, Bank
 			</div>
 
 			<div style="float:right">
-				<b>THB 890</b>
+				<b><? echo $media['product_currency']." ".$media['product_price'];?></b>
 				<br>
 				+shipping
 			</div>
