@@ -37,7 +37,51 @@
 <? } else {
 		include('nsfw_full.tpl.php');
    } ?>
-<? if($media['description'] == '') { }else{?><div style='margin-top: 5px; margin-bottom:5px;'><?=LINKS_CLICKABLE($media['description']);?></div><? } ?>
+<div style="width: 630px; background-color: #ffffff">
+	<div style="padding:20px">
+		<h3>Description:</h3>
+		<br>
+		<? if($media['description'] == '') { }else{?><div style='margin-top: 5px; margin-bottom:5px;'><?=LINKS_CLICKABLE($media['description']);?></div><? } ?>
+  	<br>
+		<div style="height: 50px;">
+
+			<div style="float:left">
+				Payment By
+			</div>
+
+			<div style="float:right">
+				<b>THB 890</b>
+				<br>
+				+shipping
+			</div>
+
+		</div>
+
+  	<div style="text-align:center">
+      <button onclick="window.location.href='http://thai-park.com/view/messages/new'" style="background-color: orange;border-color: orange;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Contact seller</button>
+			<button style="background-color: #53a93f;border-color: #53a93f;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Buy now!</button>
+		</div>
+
+	</div>
+
+ </div>
+
+ <div style="width: 630px;height: 100px;">
+	<div style="padding:20px">
+		<? $extra_menu2 = mysql_query("SELECT * FROM users WHERE id='".$media['author']."'");
+		   $remove_button2 = mysql_fetch_array($extra_menu2); ?>
+		 <div style="float: left;margin-right: 10px;"><img src="http://thai-park.com/uploads/avatars/<? echo $remove_button2['photo']; ?>" alt="Avatar" height="80" width="80"></img> </div>
+		 <div style="float: left;">
+			 Seller
+
+			 <h3 style="padding-top:5px;padding-bottom:5px;"><? echo $remove_button2['first_name']." ".$remove_button2['last_name']; ?></h3>
+
+			 From <? echo country_code_to_country($remove_button2['country']); ?>
+
+		 </div>
+	</div>
+
+ </div>
 
 <div id="fixed-toolbar" style="width: 630px; height: 2px; z-index: 999999; padding: 10px 0;"><div style="">
 
