@@ -5,12 +5,12 @@ $cat_query4 = mysql_query("SELECT * FROM categories WHERE id=".$media['cat']."")
 ?>
 <ul class="big-list">
 <li class="article">
-<h2><a href="<?=$root;?><? $cat_query = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row = mysql_fetch_row($cat_query); if($cat_row['2'] == '') { $cat_row = 'other'; }else{ $cat_row=$cat_row['2']; } if($SETTINGS['permalink'] == 'gag') { echo "/gag/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat') { echo "/".$cat_row."/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat_slugify') { echo "/".$cat_row."/".slugify($media['title']); } ?>"><?=$media['title']?></a></h2>
+<h2><a href="<?=$root;?><? $cat_query = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row = mysql_fetch_row($cat_query); if($cat_row['2'] == '') { $cat_row = 'other'; }else{ $cat_row=$cat_row['2']; } if($SETTINGS['permalink'] == 'gag') { echo "/gag/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat') { echo "/".$cat_row."/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat_slugify') { echo "/".$cat_row."/".slugify($media['title']); } ?>"><?=$media['product_title']?></a></h2>
 <div class="post-container"><a>
 <? $cat_display = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_display_row = mysql_fetch_row($cat_display);
    if(($_COOKIE['age'] || $_COOKIE['age'] == '1')) { ?>
 
-<? if($media['type'] == 'pic') { 
+<? if($media['type'] == 'pic') {
       $media_photos = mysql_query("SELECT * FROM mouse_multiple WHERE post_id='".$media['news_id']."' ORDER BY media_id ASC");
       while($media_photo = mysql_fetch_array($media_photos)) {
         echo '<div class="gif-post"><img src='.$root."/uploads/media_photos/".$media_photo['file_name'].' width="630" alt="'.$media['title'].'" title="'.$media['title'].'"></div>';
@@ -22,7 +22,7 @@ $cat_query4 = mysql_query("SELECT * FROM categories WHERE id=".$media['cat']."")
 <? } else {
 		include('nsfw_full.tpl.php');
    } ?>
-   
+
 
 </div><!--end .post-continaer-->
 <div class="post-function">
@@ -43,7 +43,7 @@ if (mysql_num_rows($query_distinct) ){ echo "up"; } else { } ?>" id='vote_button
 <div class="post-stats">
 <p>
 <? $domain = $root.$permalink4;$CommentQuery = mysql_query("SELECT * FROM comments WHERE domain = '".$domain."'");$effective_comments = mysql_num_rows($CommentQuery);$q = "SELECT * FROM votes WHERE news_id = '".$media['id']."'";$r = mysql_query($q);$effective_vote = mysql_num_rows($r);?>
-<span class='votes_count' id='votes_count<?php echo $media['id']; ?>'><?php echo $effective_vote." Punkte"; ?></span> 
+<span class='votes_count' id='votes_count<?php echo $media['id']; ?>'><?php echo $effective_vote." Punkte"; ?></span>
 </p><br>
 </div>
 

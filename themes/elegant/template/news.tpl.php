@@ -9,10 +9,10 @@
 	// --- PERMALINK --- //
 ?>
 <div style="width: 630px;">
-<h2 style="font-size: 26px; line-height: 1.3em; margin-bottom: 7px; font-family: Arial,Helvetica,Geneva,sans-serif;"><?=$media['title'];?></h2>
+<h2 style="font-size: 26px; line-height: 1.3em; margin-bottom: 7px; font-family: Arial,Helvetica,Geneva,sans-serif;"><?=$media['product_title'];?></h2>
 
 <? $domain = $root.$permalink; $CommentQuery = mysql_query("SELECT * FROM comments WHERE domain = '".$domain."'");$effective_comments = mysql_num_rows($CommentQuery);$q = "SELECT * FROM votes WHERE news_id = '".$media['id']."'";$r = mysql_query($q);$effective_vote = mysql_num_rows($r);?>
-<span class='votes_count' id='votes_count<?php echo $media['id']; ?>'><?php echo $effective_vote." ".$LANG['points_title'].""; ?></span> 
+<span class='votes_count' id='votes_count<?php echo $media['id']; ?>'><?php echo $effective_vote." ".$LANG['points_title'].""; ?></span>
 
 <a class="comments_num" href="#site">
 <span><?=$effective_comments?></span> <?=$LANG['comments_title'];?></a>
@@ -22,7 +22,7 @@
    if(($_COOKIE['age'] || $_COOKIE['age'] == '1')) { ?>
 
 <?
-    if($media['type'] == 'pic') { 
+    if($media['type'] == 'pic') {
       $media_photos = mysql_query("SELECT * FROM mouse_multiple WHERE post_id='".$media['news_id']."' ORDER BY media_id ASC");
       while($media_photo = mysql_fetch_array($media_photos)) {
         echo '<img src='.$root."/uploads/media_photos/".$media_photo['file_name'].' width="630" alt="'.$media['title'].'" title="'.$media['title'].'">';
