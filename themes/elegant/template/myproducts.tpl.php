@@ -4,9 +4,9 @@
 <form id="setting">
 
   <div id="red_table_media"> <? $table_name = "news"; ?>
-  <div class="bg_red_table_header"><?=$LANG['TITLE_POSTS'];?></div>
 
-  <div class="bg_body_table">
+<?php $_GET['action'] = 'posts'; ?>
+
   <? if($_GET['subaction'] == '') {  ?><!-- Main Page -->
   <? if($_POST['remove_all']){ $checkbox = $_POST['checkbox'];$countCheck = count($_POST['checkbox']); for($i=0;$i<$countCheck;$i++){$del_id  = $checkbox[$i];$result = mysql_query("DELETE from $table_name WHERE id = $del_id");}if($result){$header_url = $root."/view/admin/".$_GET['action'];header('Location: '.$header_url.'');}else{}}
      if($_POST['active_all']){ $checkbox = $_POST['checkbox'];$countCheck = count($_POST['checkbox']); for($i=0;$i<$countCheck;$i++){$act_id  = $checkbox[$i];$result = mysql_query("UPDATE $table_name SET status='on' WHERE id = $act_id");}if($result){$header_url = $root."/view/admin/".$_GET['action'];header('Location: '.$header_url.'');}else{}}
@@ -15,10 +15,10 @@
   <form name="form" id="form" method="post"><center>
   <table style="border-collapse:collapse; border: 1px solid #E5E5E5; background-color: #FFF;width: 97%;" border="1" cellpadding="3" cellspacing="1">
   <tr style="padding: 5px;background: gray;color: #fff;">
-  <td width="20px" class="tdcheckall"><input type="checkbox" name='checkall' onclick='checkedAll(form);' title="Check/Uncheck ALL" /></td>
+
   <td class="tdcheck" style="font-size: 14px;"><strong><?=$LANG['TITLE_POST_TITLE'];?></strong></td>
   <td class="tdcheck" style="font-size: 14px;"><strong><?=$LANG['TITLE_CATEGORY'];?></strong></td>
-  <td class="tdcheck" style="font-size: 14px;"><strong><?=$LANG['TITLE_AUTHOR'];?></strong></td>
+
   <td class="tdcheck" style="font-size: 14px;"><strong><?=$LANG['TITLE_DATE'];?></strong></td>
   <td class="tdcheck" style="font-size: 14px;width: 110px;"><strong><?=$LANG['TITLE_ACTIVE_INACTIVE'];?></strong></td>
   <td class="tdcheck" style="height: 30px; font-size: 14px;"><strong><?=$LANG['TITLE_FUNCTION'];?></strong></td>
@@ -29,25 +29,24 @@
   <? foreach(array_slice($news, $startResults, $resultsPerPage) as $media): ?>
   <? $user_query = mysql_query("SELECT * FROM users WHERE id=".$media['author'].""); $user_row = mysql_fetch_row($user_query); $cat_query2 = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row2 = mysql_fetch_row($cat_query2); ?>
   <tr>
-  <td class="tdcheckall"><input type='checkbox' name='checkbox[]' id='checkbox[]' value="<?=$media['id'];?>"></td>
+
   <td class="tdcheck"><a class="td_link" href="<?=$root;?><? $cat_query = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row = mysql_fetch_row($cat_query); if($cat_row['2'] == '') { $cat_row = 'other'; }else{ $cat_row=$cat_row['2']; } if($SETTINGS['permalink'] == 'gag') { echo "/gag/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat') { echo "/".$cat_row."/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat_slugify') { echo "/".$cat_row."/".slugify($media['title']); } ?>" target="_blank"><?=$media['title']?></a></td>
   <td class="tdcheck"><?=$cat_row2['1'];?></td>
-  <td class="tdcheck"><?=$user_row['3']?></td>
+
   <td class="tdcheck">
   <font><?=$media['date']?></font></td>
 
   <td class="tdcheck" style="width: 94px;">
   <? if($media['status'] == 'on') { ?>
-  <a href="<?=$root;?>/view/admin/<?=$_GET['action'];?>/inactive/<?=$media['id'];?>" style="font-size: 12px;color: #fff;width: 62px;background: #D80707;padding: 3px 10px;border: 1px solid #AD1515;border-radius: 5px;cursor: pointer;margin-left: 9px;"><?=$LANG['TITLE_SET_INACTIVE'];?></a>
+  <a href="<?=$root;?>/view/myproducts/<?=$_GET['action'];?>/inactive/<?=$media['id'];?>" style="font-size: 12px;color: #fff;width: 62px;background: #D80707;padding: 3px 10px;border: 1px solid #AD1515;border-radius: 5px;cursor: pointer;margin-left: 9px;">Set Inactive</a>
   <? } elseif($media['status'] == 'off') { ?>
-  <a href="<?=$root;?>/view/admin/<?=$_GET['action'];?>/active/<?=$media['id'];?>" style="font-size: 12px;color: #fff;width: 52px;background: #3EAC0A;padding: 3px 15px;border: 1px solid #2D8603;border-radius: 5px;cursor: pointer;margin-left: 9px;"><?=$LANG['TITLE_SET_ACTIVE'];?></a>
+  <a href="<?=$root;?>/view/myproducts/<?=$_GET['action'];?>/active/<?=$media['id'];?>" style="font-size: 12px;color: #fff;width: 52px;background: #3EAC0A;padding: 3px 15px;border: 1px solid #2D8603;border-radius: 5px;cursor: pointer;margin-left: 9px;">Set Active</a>
   <? } ?>
   </td>
 
   <td class="tdcheck" style="width: 94px;">
   <div class="btn-group btn-group-sm">
-  <a href="<?=$root;?>/view/admin/<?=$_GET['action'];?>/edit/<?=$media['id'];?>" class="btn_td btn-success"><i class="fa fa-pencil"></i></a>
-  <a href="<?=$root;?>/view/admin/<?=$_GET['action'];?>/delete/<?=$media['id'];?>" onclick="return confirm('<?=$LANG['confirm_to_delete_this_post'];?>');" class="btn_td btn-danger"><i class="fa fa-times"></i></a>
+  <a href="<?=$root;?>/view/myproducts/<?=$_GET['action'];?>/delete/<?=$media['id'];?>" onclick="return confirm('<?=$LANG['confirm_to_delete_this_post'];?>');" class="btn_td btn-danger"><i class="fa fa-times"></i></a>
   </div>
   </td>
   </tr>
@@ -56,9 +55,6 @@
   </table>
   </center>
   <div style="margin-left: 14px; width: 97%; display: inline-block;">
-  <div style="float: left;margin: 20px 0;"><input class="remove_all_submit" name="remove_all" type="submit" id="remove_all" value="<?=$LANG['TITLE_REMOVE'];?>" onclick="return confirm('<?=$LANG['confirm_to_delete_this_post'];?>');" /></div>
-  <div style="float: left;margin: 20px 20px;"><input value="<?=$LANG['TITLE_ACTIVE_ALL'];?>" class="remove_all_submit" name="active_all" type="submit" id="active_all" /></div>
-  <div style="float: left;margin: 20px 0px;"><input value="<?=$LANG['TITLE_INACTIVE_ALL'];?>" class="remove_all_submit" name="inactive_all" type="submit" id="inactive_all" /></div>
 
   <div style="float: right; height: 0;"><? include_once ('pagination.tpl.php'); ?></div>
   </div>
@@ -70,18 +66,18 @@
 
   <?  if($_GET['id']) {
   			mysql_query("UPDATE news SET status='on' WHERE id='".$_GET['id']."'");
-  			$header_url = $root."/view/admin/".$_GET['action'];
+  			$header_url = $root."/view/myproducts/".$_GET['action'];
   			header('Location: '.$header_url.'');
       } ?>
 
   <? } ?><!-- Active Page -->
 
 
-  <? if($_GET['subaction'] == 'inactive') { ?><!-- Inactive Page -->
+  <? if($_GET['subaction'] == 'inactive') { echo "test"; ?><!-- Inactive Page -->
 
   <?  if($_GET['id']) {
   			mysql_query("UPDATE news SET status='off' WHERE id='".$_GET['id']."'");
-  			$header_url = $root."/view/admin/".$_GET['action'];
+  			$header_url = $root."/view/myproducts/".$_GET['action'];
   			header('Location: '.$header_url.'');
       } ?>
 
@@ -100,7 +96,7 @@
   			}
   			mysql_query("DELETE FROM news WHERE id='".$_GET['id']."'");
   			if($_GET['page'] == '') { $page = "1"; } else { $page = $_GET['page']; }
-  			$header_url = $root."/view/admin/".$_GET['action'];
+  			$header_url = $root."/view/myproducts/".$_GET['action'];
   			header('Location: '.$header_url.'');
       } ?>
 
@@ -118,7 +114,7 @@
   	  $description = mysql_real_escape_string($_POST['description']);
   		mysql_query("UPDATE $table_name SET title='$title', source='$source', description='$description', cat='$category' WHERE id='".$id."'");
   		//print success message.
-  		$header_url = $root."/view/admin/".$_GET['action'];
+  		$header_url = $root."/view/myproducts/".$_GET['action'];
   		header('Location: '.$header_url.'');
   } ?>
   <section style="display: inline-block;">
@@ -152,7 +148,7 @@
   </form>
   </section>
   <? } ?><!-- Edit Page -->
-  </div>
+
 
 
 
