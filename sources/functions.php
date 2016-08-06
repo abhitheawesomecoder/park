@@ -608,7 +608,7 @@ include($document.'/sources/random_functions.php');
 	return ($matches[2]) ? $matches[2] : false;
 	}
 
-	function get_admin_posts()
+	function get_admin_posts($id=0)
 	{
 		db_connect();
 
@@ -622,7 +622,9 @@ include($document.'/sources/random_functions.php');
 			if ($key != "page") $querystring .= "$key=$value&amp;";
 		}
 
-
+		if($id)
+		$query = "SELECT * FROM news WHERE author='$id' ORDER BY id DESC LIMIT " . (($page - 1) * $rows_per_page) . ", $rows_per_page";
+		else
 		$query = "SELECT * FROM news ORDER BY id DESC LIMIT " . (($page - 1) * $rows_per_page) . ", $rows_per_page";
 
 		$result = mysql_query($query);
@@ -1103,5 +1105,5 @@ include($document.'/sources/random_functions.php');
     if( $code == 'ZW' ) $country = 'Zimbabwe';
     if( $country == '') $country = $code;
     return $country;
-}    
+}
 ?>
