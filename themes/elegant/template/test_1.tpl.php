@@ -40,9 +40,7 @@ while($media = mysql_fetch_array($result2)) {
 </ul>
 </div>
 <? } ?>
-<? } else {
-		include('nsfw.tpl.php');
-   } ?>
+<? }  ?>
 
 
 </div>
@@ -61,7 +59,7 @@ while($media = mysql_fetch_array($result2)) {
         <div class="btn-container" style="text-align: center; width: auto;"><a class="btn" href="<?=$root?>/view/popular"><?=$LANG['checkout_whats_hot'];?></a></div>
 </div>
 <? }?>
-<? } ?> <!-- OVERVIEW -->
+<?  ?> <!-- OVERVIEW -->
 
 
 <? if($_GET['subaction'] == 'posts') { ?> <!-- POSTS -->
@@ -90,9 +88,7 @@ while($media = mysql_fetch_array($result2)) {
 </ul>
 </div>
 <? } ?>
-<? } else {
-		include('nsfw.tpl.php');
-   } ?>
+<?  ?>
 
 </div>
 <? $i++;
@@ -147,9 +143,7 @@ if (mysql_num_rows($result_posts)==0) {?>
 </ul>
 </div>
 <? } ?>
-<? } else {
-		include('nsfw.tpl.php');
-   } ?>
+<? ?>
 
 
 </div>
@@ -208,9 +202,7 @@ if (mysql_num_rows($result_upvotes)==0) {?>
 </ul>
 </div>
 <? } ?>
-<? } else {
-		include('nsfw.tpl.php');
-   } ?>
+<? ?>
 
 
 </div>

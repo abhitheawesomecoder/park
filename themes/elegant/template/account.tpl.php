@@ -28,23 +28,24 @@ $Session_Users = mysql_fetch_row($session_query);
 
 </div>
 </div>
-    
 
-<div class="profile_content"> 
 
-<? 
+<div class="profile_content">
+
+<?
 if($Users['admin'] == '0') {
-	include('account_content.tpl.php');
-	echo "sdds";
+
+	include 'test.tpl.php' ;
+
 }
 
 if($Users['admin'] == '1') {
-	if($members['username'] == str_replace('.', ' ', urldecode($_GET['profile']))) { 
-   
+	if($members['username'] == str_replace('.', ' ', urldecode($_GET['profile']))) {
+
       include_once ('account_content.tpl.php');
-	  
+
    } else {
-	
+
 	 ?>
 	<div class="blank-state">
     <h3><?=$Users['6']?> <?=$Users['7']?> <?=$LANG['has_hidden_profile'];?></h3>
@@ -56,34 +57,18 @@ if($Users['admin'] == '1') {
 
 
 </div>
-    
+
 <style>
 #container { width: 800px; }
 
 @media all and (max-width: 1200px) {
 	.Theme_Content_Wrap_Right {
 		display: none;
-		
+
 	}
 }
 </style>
 <?  }
-    if($_GET['action'] == 'settings') { 
+    if($_GET['action'] == 'settings') {
 	include_once ('settings.tpl.php');
     } ?>
-	
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
