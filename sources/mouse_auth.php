@@ -140,8 +140,9 @@ if(!$username || !$password || !$name || !$surname || !$EMail){
 	$hash= md5(date("DMdYGi"));
 
 //insert the row into the database
-$res2 = mysql_query("INSERT INTO `users` (`username`,`hash`,`password`, `email`, `first_name`, `last_name`, `photo`, `active`, `register_date`) VALUES('".$username."','".$hash."','".$password."','".$EMail."','".$name."','".$surname."','avatar-blank.jpg','1','".date("Y-m-d")."')");
 
+$res2 = mysql_query("INSERT INTO `users` (`username`,`hash`,`password`, `email`, `first_name`, `last_name`, `photo`, `active`, `register_date`) VALUES('".$username."','".$hash."','".$password."','".$EMail."','".$name."','".$surname."','avatar-blank.jpg','1','".date("Y-m-d")."')");
+$new_id = mysql_insert_id();
 			// $_SESSION['username'] = $_POST['register_username'];
 			// $_SESSION['first_name'] = $_POST['register_firstname'];
 			// $_SESSION['last_name'] = $_POST['register_lastname'];
@@ -149,7 +150,7 @@ $res2 = mysql_query("INSERT INTO `users` (`username`,`hash`,`password`, `email`,
 
 			//email verification mail
 
-			$link = $root.'/verify?email='.$EMail.'&hash='.$hash.'';
+			$link = $root.'/view/verify/'.$new_id.'~'.$hash.'';
 			$to      = 'ak75963@gmail.com';
 			$subject = 'Thai-park Account Activation';
 			$message = 'Please click the link below to activate your account' . "\r\n" . $link;
@@ -159,7 +160,9 @@ $res2 = mysql_query("INSERT INTO `users` (`username`,`hash`,`password`, `email`,
 			mail($to, $subject, $message, $headers);
 
 
-				header("Location: /");
+		//		header("Location: /");
+		echo "<div style='width: 960px; margin: 0 auto;'><div class='Reg_Error'>Registartion successful. Please click the vefification link sendtoyour email.</div></div>";
+
 									}
 								}
 							}
