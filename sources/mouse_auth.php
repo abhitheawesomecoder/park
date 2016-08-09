@@ -35,7 +35,7 @@ if($_POST['login_submit']){
 // Retrieve email and password from database
 $LOGIN['Email'] = mysql_real_escape_string($_POST['Email']);
 $LOGIN['password'] = md5(mysql_real_escape_string($_POST['login_password']));
-$LOGIN_QUERY = "SELECT * FROM users WHERE email='".$LOGIN['Email']."' AND password='".$LOGIN['password']."'";
+$LOGIN_QUERY = "SELECT * FROM users WHERE email='".$LOGIN['Email']."' AND password='".$LOGIN['password']."' AND email_verified='1'";
 $LOGIN_RESULT = mysql_query($LOGIN_QUERY);
 $LOGIN_ROW = mysql_num_rows($LOGIN_RESULT);
 // Check email and password match
@@ -140,16 +140,16 @@ if(!$username || !$password || !$name || !$surname || !$EMail){
 	$hash= md5(date("DMdYGi"));
 
 //insert the row into the database
-//$res2 = mysql_query("INSERT INTO `users` (`username`,'hash',`password`, `email`, `first_name`, `last_name`, `photo`, `active`, `register_date`) VALUES('".$username."','".$hash."','".$password."','".$EMail."','".$name."','".$surname."','avatar-blank.jpg','1','".date("Y-m-d")."')");
+$res2 = mysql_query("INSERT INTO `users` (`username`,`hash`,`password`, `email`, `first_name`, `last_name`, `photo`, `active`, `register_date`) VALUES('".$username."','".$hash."','".$password."','".$EMail."','".$name."','".$surname."','avatar-blank.jpg','1','".date("Y-m-d")."')");
 
-			$_SESSION['username'] = $_POST['register_username'];
-			$_SESSION['first_name'] = $_POST['register_firstname'];
-			$_SESSION['last_name'] = $_POST['register_lastname'];
-			$_SESSION['email'] = $_POST['register_email'];
+			// $_SESSION['username'] = $_POST['register_username'];
+			// $_SESSION['first_name'] = $_POST['register_firstname'];
+			// $_SESSION['last_name'] = $_POST['register_lastname'];
+			// $_SESSION['email'] = $_POST['register_email'];
 
 			//email verification mail
-/*
-			$link = $root./verify?email='.$EMail.'&hash='.$hash.'';
+
+			$link = $root.'/verify?email='.$EMail.'&hash='.$hash.'';
 			$to      = 'ak75963@gmail.com';
 			$subject = 'Thai-park Account Activation';
 			$message = 'Please click the link below to activate your account' . "\r\n" . $link;
@@ -157,16 +157,6 @@ if(!$username || !$password || !$name || !$surname || !$EMail){
 			    'X-Mailer: PHP/' . phpversion();
 
 			mail($to, $subject, $message, $headers);
-
-			//create a verify.php and add the code below
-
-			$search = mysql_query("SELECT email, hash, active FROM users WHERE email='".$email."' AND hash='".$hash."' AND active='0'") or die(mysql_error());
-$match  = mysql_num_rows($search);
-if($match > 0){
-    //activate account
-		//redirect to home
-}
-*/
 
 
 				header("Location: /");
