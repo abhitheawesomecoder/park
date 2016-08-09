@@ -10,9 +10,23 @@
 		}
 		$hide_profile = $_POST['hide_profile'];
 
+		$payment_method= $_POST['payment_method'];
+
+		$paypal_id= $_POST['paypal_id'];
+
+		$holder_name = $_POST['holder_name'];
+
+		$bank_name = $_POST['bank_name'];
+
+		$iban = $_POST['iban'];
+
+		$bic_swift = $_POST['bic_swift'];
+
+
+
 		if (!isset($hide_profile)) $hide_profile = 0;
 
-		mysql_query("UPDATE users SET username='$username', hide_profile='$hide_profile' WHERE id='".$members['id']."'");
+		mysql_query("UPDATE users SET username='$username',hide_profile='$hide_profile',payment_method='$payment_method',paypal_id='$paypal_id',holder_name='$holder_name',$bank_name='bank_name',iban='$iban',bic_swift='$bic_swift' WHERE id='".$members['id']."'");
         //print success message.
 	}
 	// Session Member Info
@@ -33,6 +47,65 @@ $members = get_members($id);
     <label><?=$LANG['Email_title'];?></label>
     <input type="email" name="email" value="<?=$members['email']?>" maxlength="200" style="border: 1px solid #ccc;"  disabled>
     <p class="tips"><?=$LANG['Email_will_not_be_displayed_publicly'];?></p>
+
+</div>
+<script>
+// A $( document ).ready() block.
+$( document ).ready(function() {
+	$('#payment_method').change(function() {
+if(this.value == 'Paypal' ){
+$("#paypal").show();
+$('#bank').hide();
+//$("#paypal").find('input').each(function(j, element){ $(element).val(""); });
+}else if(this.value == 'Bank'){
+	$("#paypal").hide();
+	$('#bank').show();
+//$("#bank").find('input').each(function(j, element){ $(element).val(""); });
+
+}else{
+	$("#paypal").hide();
+	$('#bank').hide();
+
+}
+	});
+});
+</script>
+
+<div class="field">
+    <label>Payment Method</label>
+    <select name="payment_method" id="payment_method">
+        <option value="">Select</option>
+        <option value="Paypal" <? if($members['payment_method'] == 'Paypal') { ?>selected="selected"<? }?>>Paypal</option>
+        <option value="Bank" <? if($members['payment_method'] == 'Bank') { ?>selected="selected"<? }?>>Bank</option>
+    </select>
+
+</div>
+
+<div id="paypal" style="display:none">
+<div class="field">
+    <label>Paypal Email Id</label>
+    <input type="email" name="paypal_id" maxlength="100" style="border: 1px solid #ccc;">
+</div>
+</div>
+
+<div id="bank"  style="display:none">
+
+<div class="field">
+    <label>Holder Name</label>
+    <input type="text" name="holder_name" maxlength="100" style="border: 1px solid #ccc;">
+</div>
+<div class="field">
+    <label>Bank Name</label>
+    <input type="text" name="bank_name" maxlength="100" style="border: 1px solid #ccc;">
+</div>
+<div class="field">
+    <label>IBAN </label>
+    <input type="text" name="iban" maxlength="100" style="border: 1px solid #ccc;">
+</div>
+<div class="field">
+    <label>BIC/SWIFT Code</label>
+    <input type="text" name="bic_swift" maxlength="100" style="border: 1px solid #ccc;">
+</div>
 
 </div>
 
@@ -103,6 +176,11 @@ if($_POST['submit_password']) {
 		$birthday = $_POST['dob_year']."-".$_POST['dob_month']."-".$_POST['dob_day'];
 		$country = $_POST['country'];
 		$about_me = $_POST['about_me'];
+		$address_line1 = $_POST['address_line1'];
+		$address_line2 = $_POST['address_line2'];
+		$city = $_POST['city'];
+		$state = $_POST['state'];
+		$zip = $_POST['zip'];
 
 		$path = "uploads/avatars/";
 		$valid_formats = array("jpg", "png", "gif");
@@ -114,13 +192,13 @@ if($_POST['submit_password']) {
 	if(move_uploaded_file($tmp, $path.$actual_image_name)) {
 
 
-		if($first_name || $last_name || $gender || $birthday || $country || $about_me) {
-				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country',photo='$actual_image_name',about_me='$about_me' WHERE id='".$members['id']."'");
+		if($first_name || $last_name || $gender || $birthday || $country || $about_me || $address_line1|| $address_line2 || $city || $state|| $zip) {
+				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country',photo='$actual_image_name',about_me='$about_me',address_line1='$address_line1',address_line2='$address_line2',city='$city',state='$state',zip='$zip' WHERE id='".$members['id']."'");
       		    //print success message.
 		}
 	} else {
-		if($first_name || $last_name || $gender || $birthday || $country || $about_me) {
-				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country',about_me='$about_me' WHERE id='".$members['id']."'");
+		if($first_name || $last_name || $gender || $birthday || $country || $about_me || $address_line1|| $address_line2 || $city || $state|| $zip) {
+				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country',about_me='$about_me',address_line1='$address_line1',address_line2='$address_line2',city='$city',state='$state',zip='$zip' WHERE id='".$members['id']."'");
       		    //print success message.
 		}
 	}
@@ -131,7 +209,7 @@ $members = get_members($id);	?> <!-- Profile Action -->
 <h2><?=$LANG['Profile_title'];?></h2>
 <?
 if($_POST['submit_profile']) {
-   if($first_name || $last_name || $gender || $birthday || $country || $about_me) {
+   if($first_name || $last_name || $gender || $birthday || $country || $about_me || $address_line1|| $address_line2 || $city || $state|| $zip) {
 			   echo "<font color='#FF0000'>".$LANG['Profile_settings_has_been_saved'].".</font>";
    }
 }
@@ -192,11 +270,11 @@ if($_POST['submit_profile']) {
 
 <div class="field">
     <label>Address line 1</label>
-    <input type="text" name="address_line1" value="<?=$members['address_line1']?>" maxlength="20" style="border: 1px solid #ccc;">
+    <input type="text" name="address_line1" value="<?=$members['address_line1']?>" maxlength="40" style="border: 1px solid #ccc;">
 </div>
 <div class="field">
     <label>Address line 2</label>
-    <input type="text" name="address_line2" value="<?=$members['address_line2']?>" maxlength="20" style="border: 1px solid #ccc;">
+    <input type="text" name="address_line2" value="<?=$members['address_line2']?>" maxlength="40" style="border: 1px solid #ccc;">
 </div>
 <div class="field">
     <label>City</label>
