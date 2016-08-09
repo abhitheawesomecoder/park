@@ -162,8 +162,8 @@
 
 
     <ul class="form-nav">
-        <li><a href="<?=$root;?>/view/messages/new" <? if($_GET['action'] == 'new') { echo 'class="selected"'; }?>><?=$LANG['TITLE_MESSAGES_SEND_MESSAGE'];?></a></li>
-        <li><a href="<?=$root;?>/view/messages" <? if($_GET['action'] == '') { echo 'class="selected"'; }?>><?=$LANG['TITLE_MESSAGES'];?><?php if($count_messages_seen == '0') { echo ""; } else { echo " (".$count_messages_seen.")"; } ?></a></li>
+        <li><a href="<?=$root;?>/view/messages/new" <? if($_GET['action'] == 'new') { echo 'class="selected"'; }?>>My Products</a></li>
+        <li><a href="<?=$root;?>/view/messages" <? if($_GET['action'] == '') { echo 'class="selected"'; }?>>Sells<?php if($count_messages_seen == '0') { echo ""; } else { echo " (".$count_messages_seen.")"; } ?></a></li>
     </ul>
 
 <div class="clearfix"></div>
