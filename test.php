@@ -2,7 +2,7 @@
 
 error_reporting(1);
 error_reporting(E_ALL ^ E_NOTICE);
-
+/*
 $servername = "localhost";
 $username = "root";
 $password = "welcome1";
@@ -28,3 +28,4 @@ if (mysqli_num_rows($result) > 0) {
 }
 
 mysqli_close($conn);
+*/

@@ -137,16 +137,37 @@ if(!$username || !$password || !$name || !$surname || !$EMail){
 	$surname = protect(mysql_real_escape_string($_POST['register_lastname']));
 	$EMail = protect(mysql_real_escape_string($_POST['register_email']));
 	$birthday = protect(mysql_real_escape_string($_POST['BirthDay']."-".$_POST['BirthMonth']."-".$_POST['BirthYear']));
+	$hash= md5(date("DMdYGi"));
 
 //insert the row into the database
-$res2 = mysql_query("INSERT INTO `users` (`username`, `password`, `email`, `first_name`, `last_name`, `photo`, `active`, `register_date`) VALUES('".$username."','".$password."','".$EMail."','".$name."','".$surname."','avatar-blank.jpg','1','".date("Y-m-d")."')");
+//$res2 = mysql_query("INSERT INTO `users` (`username`,'hash',`password`, `email`, `first_name`, `last_name`, `photo`, `active`, `register_date`) VALUES('".$username."','".$hash."','".$password."','".$EMail."','".$name."','".$surname."','avatar-blank.jpg','1','".date("Y-m-d")."')");
 
 			$_SESSION['username'] = $_POST['register_username'];
 			$_SESSION['first_name'] = $_POST['register_firstname'];
 			$_SESSION['last_name'] = $_POST['register_lastname'];
 			$_SESSION['email'] = $_POST['register_email'];
 
-			//email verification
+			//email verification mail
+/*
+			$link = $root./verify?email='.$EMail.'&hash='.$hash.'';
+			$to      = 'ak75963@gmail.com';
+			$subject = 'Thai-park Account Activation';
+			$message = 'Please click the link below to activate your account' . "\r\n" . $link;
+			$headers = 'From: admin@thai-park.com' . "\r\n" .
+			    'X-Mailer: PHP/' . phpversion();
+
+			mail($to, $subject, $message, $headers);
+
+			//create a verify.php and add the code below
+
+			$search = mysql_query("SELECT email, hash, active FROM users WHERE email='".$email."' AND hash='".$hash."' AND active='0'") or die(mysql_error());
+$match  = mysql_num_rows($search);
+if($match > 0){
+    //activate account
+		//redirect to home
+}
+*/
+
 
 				header("Location: /");
 									}
