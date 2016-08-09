@@ -102,6 +102,7 @@ if($_POST['submit_password']) {
 		$gender = $_POST['gender'];
 		$birthday = $_POST['dob_year']."-".$_POST['dob_month']."-".$_POST['dob_day'];
 		$country = $_POST['country'];
+		$about_me = $_POST['about_me'];
 
 		$path = "uploads/avatars/";
 		$valid_formats = array("jpg", "png", "gif");
@@ -113,13 +114,13 @@ if($_POST['submit_password']) {
 	if(move_uploaded_file($tmp, $path.$actual_image_name)) {
 
 
-		if($first_name || $last_name || $gender || $birthday || $country) {
-				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country',photo='$actual_image_name' WHERE id='".$members['id']."'");
+		if($first_name || $last_name || $gender || $birthday || $country || $about_me) {
+				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country',photo='$actual_image_name',about_me='$about_me' WHERE id='".$members['id']."'");
       		    //print success message.
 		}
 	} else {
-		if($first_name || $last_name || $gender || $birthday || $country) {
-				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country' WHERE id='".$members['id']."'");
+		if($first_name || $last_name || $gender || $birthday || $country || $about_me) {
+				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country',about_me='$about_me' WHERE id='".$members['id']."'");
       		    //print success message.
 		}
 	}
@@ -130,7 +131,7 @@ $members = get_members($id);	?> <!-- Profile Action -->
 <h2><?=$LANG['Profile_title'];?></h2>
 <?
 if($_POST['submit_profile']) {
-   if($first_name || $last_name || $gender || $birthday || $country) {
+   if($first_name || $last_name || $gender || $birthday || $country || $about_me) {
 			   echo "<font color='#FF0000'>".$LANG['Profile_settings_has_been_saved'].".</font>";
    }
 }
@@ -186,7 +187,7 @@ if($_POST['submit_profile']) {
 
 <div class="field">
     <label>About me</label>
-		<textarea name="amout_me" rows="4" cols="52" style="border: 1px solid #ccc;"><?=$members['about_me']?></textarea>
+		<textarea name="about_me" rows="4" cols="52" style="border: 1px solid #ccc;"><?=$members['about_me']?></textarea>
 </div>
 
 <div class="field">
