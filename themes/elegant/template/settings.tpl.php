@@ -9,14 +9,14 @@
 			$username = $members['username'];
 		}
 		$hide_profile = $_POST['hide_profile'];
-		
+
 		if (!isset($hide_profile)) $hide_profile = 0;
-		
-		mysql_query("UPDATE users SET username='$username', hide_profile='$hide_profile' WHERE id='".$members['id']."'"); 
-        //print success message. 
+
+		mysql_query("UPDATE users SET username='$username', hide_profile='$hide_profile' WHERE id='".$members['id']."'");
+        //print success message.
 	}
 	// Session Member Info
-$members = get_members($id);	
+$members = get_members($id);
 	  ?>  <!-- Index Action -->
 <form id="setting" action="" method="POST">
 <h2><?=$LANG['Account_subtitle'];?></h2>
@@ -26,14 +26,14 @@ $members = get_members($id);
     <label><?=$LANG['Username_title'];?></label>
     <input type="text" name="username" value="<?=$members['username']?>" maxlength="50" style="border: 1px solid #ccc;" <? if($members['oauth_provider']) {?> disabled<? }?>>
     <p class="tips"><?=$root;?>/u/<?=$members['username']?></p>
-    
+
 </div>
 
 <div class="field">
     <label><?=$LANG['Email_title'];?></label>
     <input type="email" name="email" value="<?=$members['email']?>" maxlength="200" style="border: 1px solid #ccc;"  disabled>
     <p class="tips"><?=$LANG['Email_will_not_be_displayed_publicly'];?></p>
-    
+
 </div>
 
 <div class="field">
@@ -41,7 +41,7 @@ $members = get_members($id);
     <div class="field checkbox">
         <label><input type="checkbox" name="hide_profile" value="1" <? if($members['hide_profile'] == '1') {?> checked<? }?>><?=$LANG['Hide_my_profile_to_others'];?></label>
     </div>
-</div>                
+</div>
         <div class="btn-container">
             <input name="submit_setting" type="submit" value="<?=$LANG['save_changes_title'];?>">
         </div>
@@ -49,24 +49,24 @@ $members = get_members($id);
 <div class="btn-container"><a class="link" href="<?=$root;?>/member/delete"><?=$LANG['Delete_my_account'];?></a></div>
 </form>
 <?  }  ?> <!-- Index Action -->
-      
-      
+
+
 <?  if($_GET['subaction'] == 'password') {
     if($_POST['submit_password']) {
     	$old_password = $_POST['old_password'];
 		$new_password = $_POST['new_password'];
 		$new_password_repeat = $_POST['new_password_repeat'];
-		
+
 		if(md5($old_password) == $members['password']) {
 		   if($new_password == $new_password_repeat) {
-				mysql_query("UPDATE users SET password='".md5($new_password)."' WHERE id='".$members['id']."'"); 
-      		    //print success message. 
+				mysql_query("UPDATE users SET password='".md5($new_password)."' WHERE id='".$members['id']."'");
+      		    //print success message.
 		   }
 		 }
 	} ?> <!-- Password Action -->
 <form id="setting" action="" method="POST">
 <h2><?=$LANG['Password_title'];?></h2>
-<? 
+<?
 if($_POST['submit_password']) {
    if($_POST['old_password'] == $members['password']) {
 		   if($_POST['new_password'] == $_POST['new_password_repeat']) {
@@ -102,7 +102,7 @@ if($_POST['submit_password']) {
 		$gender = $_POST['gender'];
 		$birthday = $_POST['dob_year']."-".$_POST['dob_month']."-".$_POST['dob_day'];
 		$country = $_POST['country'];
-		
+
 		$path = "uploads/avatars/";
 		$valid_formats = array("jpg", "png", "gif");
 		$name = $_FILES['photoimg']['name'];
@@ -111,16 +111,16 @@ if($_POST['submit_password']) {
 						$actual_image_name = time().substr($txt, 5).".".$ext;
 						$tmp = $_FILES['photoimg']['tmp_name'];
 	if(move_uploaded_file($tmp, $path.$actual_image_name)) {
-			  
-		 
+
+
 		if($first_name || $last_name || $gender || $birthday || $country) {
-				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country',photo='$actual_image_name' WHERE id='".$members['id']."'"); 
-      		    //print success message. 
+				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country',photo='$actual_image_name' WHERE id='".$members['id']."'");
+      		    //print success message.
 		}
 	} else {
 		if($first_name || $last_name || $gender || $birthday || $country) {
-				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country' WHERE id='".$members['id']."'"); 
-      		    //print success message. 
+				mysql_query("UPDATE users SET first_name='$first_name',last_name='$last_name',gender='$gender',born='$birthday',country='$country' WHERE id='".$members['id']."'");
+      		    //print success message.
 		}
 	}
 
@@ -128,7 +128,7 @@ if($_POST['submit_password']) {
 $members = get_members($id);	?> <!-- Profile Action -->
 <form id="setting" action="" method="POST" enctype="multipart/form-data">
 <h2><?=$LANG['Profile_title'];?></h2>
-<? 
+<?
 if($_POST['submit_profile']) {
    if($first_name || $last_name || $gender || $birthday || $country) {
 			   echo "<font color='#FF0000'>".$LANG['Profile_settings_has_been_saved'].".</font>";
@@ -147,7 +147,7 @@ if($_POST['submit_profile']) {
                 <input type="hidden" name="default_avatar" />
     </div>
     <div class="clearfix"></div>
-    
+
 </div>
 <input type="hidden" name="profile_color" value="">
 <div class="field">
@@ -170,7 +170,7 @@ if($_POST['submit_profile']) {
         <option value="M" <? if($members['gender'] == 'M') { ?>selected="selected"<? }?>><?=$LANG['Male_title'];?></option>
         <option value="X" <? if($members['gender'] == 'X') { ?>selected="selected"<? }?>><?=$LANG['Unspecified_title'];?></option>
     </select>
-    
+
 </div>
 
 <div class="field">
@@ -181,9 +181,34 @@ if($_POST['submit_profile']) {
         <input class="month" type="text" name="dob_month" value="<?=$born_date_m;?>" placeholder="MM"  style="float: left; border: 1px solid #ccc;"/>
         <input class="day" type="text" name="dob_day" value="<?=$born_date_d;?>" placeholder="DD"  style="float: left; border: 1px solid #ccc;"/>
     </div>
-    
+
 </div>
 
+<div class="field">
+    <label>About me</label>
+		<textarea name="amout_me" rows="4" cols="52" style="border: 1px solid #ccc;"><?=$members['about_me']?></textarea>
+</div>
+
+<div class="field">
+    <label>Address line 1</label>
+    <input type="text" name="address_line1" value="<?=$members['address_line1']?>" maxlength="20" style="border: 1px solid #ccc;">
+</div>
+<div class="field">
+    <label>Address line 2</label>
+    <input type="text" name="address_line2" value="<?=$members['address_line2']?>" maxlength="20" style="border: 1px solid #ccc;">
+</div>
+<div class="field">
+    <label>City</label>
+    <input type="text" name="city" value="<?=$members['city']?>" maxlength="20" style="border: 1px solid #ccc;">
+</div>
+<div class="field">
+    <label>State</label>
+    <input type="text" name="state" value="<?=$members['state']?>" maxlength="20" style="border: 1px solid #ccc;">
+</div>
+<div class="field">
+    <label>Zip</label>
+    <input type="text" name="zip" value="<?=$members['zip']?>" maxlength="20" style="border: 1px solid #ccc;">
+</div>
 
 <div class="field">
     <label><?=$LANG['Country_title'];?></label>
@@ -428,12 +453,12 @@ if($_POST['submit_profile']) {
 
 </form>
 <? } ?> <!-- Profile Action -->
-            
+
 <ul class="form-nav">
         <li><a href="<?=$root;?>/user/settings/" <? if($_GET['subaction'] == '') { echo 'class="selected"'; }?>><?=$LANG['Account_subtitle'];?></a></li>
         <li><a href="<?=$root;?>/user/settings/password" <? if($_GET['subaction'] == 'password') { echo 'class="selected"'; }?>><?=$LANG['Password_subtitle'];?></a></li>
         <li><a href="<?=$root;?>/user/settings/profile" <? if($_GET['subaction'] == 'profile') { echo 'class="selected"'; }?>><?=$LANG['Profile_subtitle'];?></a></li>
     </ul>
-    
+
 <div class="clearfix"></div>
 </div>
