@@ -67,9 +67,9 @@ curl_close($ch);
 <script src="<?=$root;?>/themes/<?=$SETTINGS['theme'];?>/js/isotope.js" type="text/javascript"></script>
 <script src="<?=$root;?>/themes/<?=$SETTINGS['theme'];?>/js/cookie.js"></script>
 <style><? if($settings['theme']) {include($document.'/themes/'.$settings['theme'].'/color_picker.php'); } ?></style>
-<? if($SETTINGS['age_18'] == '1') { ?>
+<? //if($SETTINGS['age_18'] == '1') { ?>
   <script type="text/javascript" src="<?=$root;?>/themes/<?=$SETTINGS['theme'];?>/js/fancybox.js?v=2.0.6"></script>
-<? } ?>
+<? //} ?>
 </head>
 
 <body>

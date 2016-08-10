@@ -56,11 +56,40 @@
 			</div>
 
 		</div>
+<script>
 
+$( document ).ready(function() {
+    $('.fancybox').fancybox({
+
+				helpers : {
+					title : {
+						type : null
+					},
+					overlay : {
+						css : {
+							'background-color' : '#eee',
+							opacity    : 0.5
+						}
+					}
+				}
+			});
+});
+
+</script>
   	<div style="text-align:center">
       <button onclick="window.location.href='http://thai-park.com/view/messages/new'" style="background-color: orange;border-color: orange;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Contact seller</button>
-			<button style="background-color: #53a93f;border-color: #53a93f;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Buy now!</button>
+			<button id="buynow" style="background-color: #53a93f;border-color: #53a93f;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Buy now!</button>
+<a class="fancybox" href="#inline1" title="Lorem ipsum dolor sit amet">test</a>
 		</div>
+
+	<div id="inline1" style="width:400px;display: none;">
+		<h3>Etiam quis mi eu elit</h3>
+			<a href="javascript:jQuery.fancybox.close();">Close</a>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis mi eu elit tempor facilisis id et neque. Nulla sit amet sem sapien. Vestibulum imperdiet porta ante ac ornare. Nulla et lorem eu nibh adipiscing ultricies nec at lacus. Cras laoreet ultricies sem, at blandit mi eleifend aliquam. Nunc enim ipsum, vehicula non pretium varius, cursus ac tortor. Vivamus fringilla congue laoreet. Quisque ultrices sodales orci, quis rhoncus justo auctor in. Phasellus dui eros, bibendum eu feugiat ornare, faucibus eu mi. Nunc aliquet tempus sem, id aliquam diam varius ac. Maecenas nisl nunc, molestie vitae eleifend vel, iaculis sed magna. Aenean tempus lacus vitae orci posuere porttitor eget non felis. Donec lectus elit, aliquam nec eleifend sit amet, vestibulum sed nunc.
+		</p>
+
+	</div>
 
 	</div>
 

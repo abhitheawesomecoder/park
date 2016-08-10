@@ -22,7 +22,10 @@ while($media = mysql_fetch_array($result2)) {
 <div class="box">
 <a href="" style="color: #000; font-size: 13px; line-height: 24px;"><font style="font-weight: bold;padding: 3px 0;border-bottom: 1px solid #000;"><?=$first_name . " " . $last_name;?></font> &nbsp;
 <font style="letter-spacing: 0.3px;color:#ee0005;"><? if($media['activity'] == 'comment') { if($media['activity_sub'] == 'like') { ?><?=$LANG['upvoted_and'];?> <? }?><?=$LANG['commented'];?><? } if($media['activity_sub'] == 'like') { if($media['activity'] == 'comment') {  } else {?><?=$LANG['upvoted'];?><? } }?></font></a>
+
+
 <a href="<?=$root;?><? $cat_query = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row = mysql_fetch_row($cat_query); if($cat_row['2'] == '') { $cat_row = 'other'; }else{ $cat_row=$cat_row['2']; } if($SETTINGS['permalink'] == 'gag') { echo "/gag/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat') { echo "/".$cat_row."/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat_slugify') { echo "/".$cat_row."/".slugify($media['title']); } ?>">
+
 <div class="box-media-title"><?=$media['title']?></div>
 <? $cat_display = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_display_row = mysql_fetch_row($cat_display);
 ?>
