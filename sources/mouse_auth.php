@@ -161,7 +161,7 @@ $new_id = mysql_insert_id();
 
 
 		//		header("Location: /");
-		echo "<div style='width: 960px; margin: 0 auto;'><div class='Reg_Error'>Registartion successful. Please click the vefification link sendtoyour email.</div></div>";
+		echo "<div style='width: 960px; margin: 0 auto;'><div style='color:green' class='Reg_Error'>Registration successful. Please click the verification link sent to your email.</div></div>";
 
 									}
 								}
