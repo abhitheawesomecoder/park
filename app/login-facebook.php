@@ -16,7 +16,7 @@ mysql_query("SET NAMES utf8");
 
 class User {
 
-    function checkUser($uid,$oauth_provider,$username,$middle_name,$email,$birthday,$first_name,$last_name,$picture,$twitter_otoken,$twitter_otoken_secret) 
+    function checkUser($uid,$oauth_provider,$username,$middle_name,$email,$birthday,$first_name,$last_name,$picture,$twitter_otoken,$twitter_otoken_secret)
 	{
 		mysql_query("SET NAMES utf8");
         $query = mysql_query("SELECT * FROM `users` WHERE oauth_uid = '$uid' and oauth_provider = '$oauth_provider'") or die(mysql_error());
@@ -25,16 +25,16 @@ class User {
             # User is already present
         } else {
             #user not present. Insert a new Record
-            $query = mysql_query("INSERT INTO `users` 
-			(oauth_provider, oauth_uid, username,email,first_name,last_name,photo,register_date) 
-			VALUES ('$oauth_provider', $uid, '".mysql_real_escape_string($username)."','$email','".mysql_real_escape_string($first_name)."','".mysql_real_escape_string($last_name)."','$picture','".date("Y-m-d")."')") or die(mysql_error());
+            $query = mysql_query("INSERT INTO `users`
+			(email_verified,oauth_provider, oauth_uid, username,email,first_name,last_name,photo,register_date)
+			VALUES (1,'$oauth_provider', $uid, '".mysql_real_escape_string($username)."','$email','".mysql_real_escape_string($first_name)."','".mysql_real_escape_string($last_name)."','$picture','".date("Y-m-d")."')") or die(mysql_error());
             $query = mysql_query("SELECT * FROM `users` WHERE oauth_uid = '$uid' and oauth_provider = '$oauth_provider'");
             $result = mysql_fetch_array($query);
             return $result;
         }
         return $result;
     }
-	
+
 	function checkUserGoogle($uid, $oauth_provider, $username, $email)
 	{
         $query = mysql_query("SELECT * FROM `users` WHERE email = '$email' and oauth_provider = '$oauth_provider'") or die(mysql_error());
@@ -53,7 +53,7 @@ class User {
         return $result;
     }
 
-    
+
 
 }
 
@@ -81,7 +81,7 @@ if ($user) {
 
     if (!empty($user )) {
         # User info ok? Let's print it (Here we will be adding the login and registering routines)
-  
+
         $username = mysql_real_escape_string($user_profile['name']);
 			 $uid = $user_profile['id'];
 		$middle_name = mysql_real_escape_string($user_profile['middle_name']);
