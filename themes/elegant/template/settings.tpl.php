@@ -26,7 +26,7 @@
 
 		if (!isset($hide_profile)) $hide_profile = 0;
 
-		mysql_query("UPDATE users SET username='$username',hide_profile='$hide_profile',payment_method='$payment_method',paypal_id='$paypal_id',holder_name='$holder_name',$bank_name='bank_name',iban='$iban',bic_swift='$bic_swift' WHERE id='".$members['id']."'");
+		mysql_query("UPDATE users SET username='$username',hide_profile='$hide_profile',payment_method='".$payment_method."',paypal_id='".$paypal_id."',holder_name='$holder_name',bank_name='$bank_name',iban='$iban',bic_swift='$bic_swift' WHERE id='".$members['id']."'");
         //print success message.
 	}
 	// Session Member Info
@@ -56,11 +56,12 @@ $( document ).ready(function() {
 if(this.value == 'Paypal' ){
 $("#paypal").show();
 $('#bank').hide();
-//$("#paypal").find('input').each(function(j, element){ $(element).val(""); });
+//$("#paypal").find('input').each(function(j, element){ 			$(element).val(""); });
+
 }else if(this.value == 'Bank'){
 	$("#paypal").hide();
 	$('#bank').show();
-//$("#bank").find('input').each(function(j, element){ $(element).val(""); });
+//	$("#bank").find('input').each(function(j, element){ $(element).val(""); });
 
 }else{
 	$("#paypal").hide();
@@ -84,7 +85,7 @@ $('#bank').hide();
 <div id="paypal" style="display:none">
 <div class="field">
     <label>Paypal Email Id</label>
-    <input type="email" name="paypal_id" maxlength="100" style="border: 1px solid #ccc;">
+    <input type="email" name="paypal_id" maxlength="100" value="<?php echo $members['paypal_id']; ?>" style="border: 1px solid #ccc;">
 </div>
 </div>
 
@@ -92,19 +93,19 @@ $('#bank').hide();
 
 <div class="field">
     <label>Holder Name</label>
-    <input type="text" name="holder_name" maxlength="100" style="border: 1px solid #ccc;">
+    <input type="text" name="holder_name" value="<?php echo $members['holder_name']; ?>" maxlength="100" style="border: 1px solid #ccc;">
 </div>
 <div class="field">
     <label>Bank Name</label>
-    <input type="text" name="bank_name" maxlength="100" style="border: 1px solid #ccc;">
+    <input type="text" name="bank_name" value="<?php echo $members['bank_name']; ?>" maxlength="100" style="border: 1px solid #ccc;">
 </div>
 <div class="field">
     <label>IBAN </label>
-    <input type="text" name="iban" maxlength="100" style="border: 1px solid #ccc;">
+    <input type="text" name="iban" value="<?php echo $members['iban']; ?>" maxlength="100" style="border: 1px solid #ccc;">
 </div>
 <div class="field">
     <label>BIC/SWIFT Code</label>
-    <input type="text" name="bic_swift" maxlength="100" style="border: 1px solid #ccc;">
+    <input type="text" name="bic_swift" value="<?php echo $members['bic_swift']; ?>" maxlength="100" style="border: 1px solid #ccc;">
 </div>
 
 </div>
