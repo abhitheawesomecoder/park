@@ -9,7 +9,7 @@
 	// --- PERMALINK --- //
 ?>
 <div style="width: 630px;">
-<h2 style="font-size: 26px; line-height: 1.3em; margin-bottom: 7px; font-family: Arial,Helvetica,Geneva,sans-serif;"><?=$media['product_title'];?></h2>
+<h2 id="product_title" style="font-size: 26px; line-height: 1.3em; margin-bottom: 7px; font-family: Arial,Helvetica,Geneva,sans-serif;"><?=$media['product_title'];?></h2>
 
 <? $domain = $root.$permalink; $CommentQuery = mysql_query("SELECT * FROM comments WHERE domain = '".$domain."'");$effective_comments = mysql_num_rows($CommentQuery);$q = "SELECT * FROM votes WHERE news_id = '".$media['id']."'";$r = mysql_query($q);$effective_vote = mysql_num_rows($r);?>
 <span class='votes_count' id='votes_count<?php echo $media['id']; ?>'><?php echo $effective_vote." ".$LANG['points_title'].""; ?></span>
@@ -59,12 +59,25 @@
 <script>
 
 $( document ).ready(function() {
-    $('.fancybox').fancybox({
+	$( "#buynow" ).click(function() {
 
+		$("#hidden_buy_now").click();
+
+	});
+
+	$( "#buy_confirm" ).click(function() {
+
+		console.log("ajax call");
+
+	});
+
+    $('.fancybox').fancybox({
+			afterLoad : function() {
+			$("#product_title_modal").text($("#product_title").text());
+			
+			},
 				helpers : {
-					title : {
-						type : null
-					},
+					title : null,
 					overlay : {
 						css : {
 							'background-color' : '#eee',
@@ -79,15 +92,22 @@ $( document ).ready(function() {
   	<div style="text-align:center">
       <button onclick="window.location.href='http://thai-park.com/view/messages/new'" style="background-color: orange;border-color: orange;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Contact seller</button>
 			<button id="buynow" style="background-color: #53a93f;border-color: #53a93f;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Buy now!</button>
-<a class="fancybox" href="#inline1" title="Lorem ipsum dolor sit amet">test</a>
+      <a id="hidden_buy_now" style="display:none" class="fancybox" href="#inline1" title="Lorem ipsum dolor sit amet">test</a>
 		</div>
 
-	<div id="inline1" style="width:400px;display: none;">
-		<h3>Etiam quis mi eu elit</h3>
-			<a href="javascript:jQuery.fancybox.close();">Close</a>
+	<div id="inline1" style="width:400px;display: none;text-align: center;">
+		<h3 id="product_title_modal">Etiam quis mi eu elit</h3>
+
+			<br>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam quis mi eu elit tempor facilisis id et neque. Nulla sit amet sem sapien. Vestibulum imperdiet porta ante ac ornare. Nulla et lorem eu nibh adipiscing ultricies nec at lacus. Cras laoreet ultricies sem, at blandit mi eleifend aliquam. Nunc enim ipsum, vehicula non pretium varius, cursus ac tortor. Vivamus fringilla congue laoreet. Quisque ultrices sodales orci, quis rhoncus justo auctor in. Phasellus dui eros, bibendum eu feugiat ornare, faucibus eu mi. Nunc aliquet tempus sem, id aliquam diam varius ac. Maecenas nisl nunc, molestie vitae eleifend vel, iaculis sed magna. Aenean tempus lacus vitae orci posuere porttitor eget non felis. Donec lectus elit, aliquam nec eleifend sit amet, vestibulum sed nunc.
+      Do you want to buy this product?
 		</p>
+			<br>
+	  <div >
+			<button onclick="javascript:jQuery.fancybox.close();" style="background-color: red;border-color: red;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">No</button>
+			<button id="buy_confirm" style="background-color: green;border-color: green;padding: 5px 20px;font-weight: bold;color: #fff;" type="button" >Yes</button>
+
+		</div
 
 	</div>
 
