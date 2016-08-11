@@ -3,6 +3,31 @@
 ob_start();
 session_start();
 
+if($_POST['buy_product']){
+	define('DATABASE_HOST', 'localhost');
+	define('DATABASE_NAME', 'usr_web26337299_1');
+	define('DATABASE_USERNAME', 'web26337299');
+	define('DATABASE_PASSWORD', 'CDC2gqTW');
+	mysql_connect(DATABASE_HOST,DATABASE_USERNAME,DATABASE_PASSWORD) or die(mysql_error());
+	mysql_select_db(DATABASE_NAME) or die(mysql_error());
+	mysql_query("SET CHARACTER SET utf8");
+	mysql_query("SET NAMES 'utf8'");
+
+	// check if user has entered allthe info if not return error message
+	// save prodct id seller id and buyer id return success message
+
+	$buyer_id = $_SESSION['username'];
+	$product_id = $_POST['product_id'];
+	$seller_id = $_POST['seller_id'];
+
+	$result_purchases = mysql_query("INSERT INTO `purchases` (`product_id`,`buyer_id`,`seller_id`, `date`) VALUES('".$product_id."','".$buyer_id."','".$seller_id."','".date("Y-m-d")."')");
+
+
+	echo json_encode([ "code" => $result_purchases ]);
+
+	exit();
+}
+
 $root = 'http://' . $_SERVER['SERVER_NAME'] . dirname($_SERVER['SCRIPT_NAME']);
 if(substr($root, -1)=="/")
 $root = 'http://' . $_SERVER['SERVER_NAME'];
@@ -14,6 +39,7 @@ $document = '' . $_SERVER['DOCUMENT_ROOT'];
 include_once ($document.'/includes/config.php');
 include_once ($document.'/includes/db_connect.php');
 include_once ($document.'/sources/functions.php');
+
 
 
 // Re-type Password

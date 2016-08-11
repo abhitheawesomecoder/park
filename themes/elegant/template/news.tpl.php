@@ -1,4 +1,4 @@
-<?
+<? 
 	// --- PERMALINK --- //
 	$permalink_cat_query = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $permalink_cat_row = mysql_fetch_array($permalink_cat_query);
 	if($settings['permalink'] == '1') {
@@ -9,7 +9,8 @@
 	// --- PERMALINK --- //
 ?>
 <div style="width: 630px;">
-<h2 id="product_title" style="font-size: 26px; line-height: 1.3em; margin-bottom: 7px; font-family: Arial,Helvetica,Geneva,sans-serif;"><?=$media['product_title'];?></h2>
+	 <input type="hidden" id="product_id" value="<?php echo $media['id'] ?>" >
+<h2  id="product_title" style="font-size: 26px; line-height: 1.3em; margin-bottom: 7px; font-family: Arial,Helvetica,Geneva,sans-serif;"><?=$media['product_title'];?></h2>
 
 <? $domain = $root.$permalink; $CommentQuery = mysql_query("SELECT * FROM comments WHERE domain = '".$domain."'");$effective_comments = mysql_num_rows($CommentQuery);$q = "SELECT * FROM votes WHERE news_id = '".$media['id']."'";$r = mysql_query($q);$effective_vote = mysql_num_rows($r);?>
 <span class='votes_count' id='votes_count<?php echo $media['id']; ?>'><?php echo $effective_vote." ".$LANG['points_title'].""; ?></span>
@@ -67,14 +68,45 @@ $( document ).ready(function() {
 
 	$( "#buy_confirm" ).click(function() {
 
-		console.log("ajax call");
+		product_id = $( "#product_id" ).val();
+		seller_id = $( "#seller_id" ).val();
+
+		console.log(product_id);
+		console.log(seller_id);
+
+		data = new FormData();
+    data.append( 'product_id', product_id );
+		data.append( 'seller_id', seller_id );
+
+		data.append( 'buy_product', true);
+		var URL = "../sources/mouse_auth.php";
+
+		 fetch(URL, {
+			method: 'post',
+			mode: 'no-cors',
+			credentials: "same-origin",
+			body: data
+		}).then(function(response){
+
+					return response.json();
+			})  .then(function(json){
+			  $.fancybox.close();
+				console.log(json.code);
+			//	$('#formpart2').show();
+			//	$("#course_id").html(json.html);
+//  return json_encode([ "html" => $html ]);
+			})
+				.catch(function(error){
+					  $.fancybox.close();
+
+				});
 
 	});
 
     $('.fancybox').fancybox({
 			afterLoad : function() {
 			$("#product_title_modal").text($("#product_title").text());
-			
+
 			},
 				helpers : {
 					title : null,
@@ -96,7 +128,7 @@ $( document ).ready(function() {
 		</div>
 
 	<div id="inline1" style="width:400px;display: none;text-align: center;">
-		<h3 id="product_title_modal">Etiam quis mi eu elit</h3>
+		<h3 id="product_title_modal"></h3>
 
 			<br>
 		<p>
@@ -119,6 +151,7 @@ $( document ).ready(function() {
 	<div style="padding:20px">
 		<? $extra_menu2 = mysql_query("SELECT * FROM users WHERE id='".$media['author']."'");
 		   $remove_button2 = mysql_fetch_array($extra_menu2); ?>
+			 <input type="hidden" id="seller_id" value="<?php echo $remove_button2['id'] ?>" >
 		 <div style="float: left;margin-right: 10px;"><img src="http://thai-park.com/uploads/avatars/<? echo $remove_button2['photo']; ?>" alt="Avatar" height="80" width="80"></img> </div>
 		 <div style="float: left;">
 			 Seller
