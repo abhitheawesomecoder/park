@@ -25,7 +25,7 @@
   </tr>
 
 
-  <? $news = get_admin_posts($members["id"]); ?>
+  <? $news = get_purchase_sales($members["id"]); ?>
   <? foreach(array_slice($news, $startResults, $resultsPerPage) as $media): ?>
   <? $user_query = mysql_query("SELECT * FROM users WHERE id=".$media['author'].""); $user_row = mysql_fetch_row($user_query); $cat_query2 = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row2 = mysql_fetch_row($cat_query2); ?>
   <tr>
@@ -162,9 +162,9 @@
 
 
     <ul class="form-nav">
-        <li><a href="<?=$root;?>/view/myproducts" class="selected">My Products</a></li>
+        <li><a href="<?=$root;?>/view/myproducts">My Products</a></li>
         <li><a href="<?=$root;?>/view/sells">Sells</a></li>
-        <li><a href="<?=$root;?>/view/purchases">Purchases</a></li>
+        <li><a href="<?=$root;?>/view/purchases" class="selected" >Purchases</a></li>
   </ul>
 
 <div class="clearfix"></div>

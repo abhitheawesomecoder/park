@@ -633,6 +633,37 @@ include($document.'/sources/random_functions.php');
 
 		return $result;
 	}
+	function get_purchase_sales($id=0,$type="P")
+	{
+		db_connect();
+
+		$ROWS_IN_CATEGORIES_PER_PAGE = 25;
+		$rows_per_page = $ROWS_IN_CATEGORIES_PER_PAGE;
+		$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+		$pages = implode(mysql_fetch_assoc(mysql_query("SELECT COUNT(key) FROM purchases")));
+		$pages = ceil($pages / $ROWS_IN_CATEGORIES_PER_PAGE);
+		$querystring = "";
+		foreach ($_GET as $key => $value) {
+			if ($key != "page") $querystring .= "$key=$value&amp;";
+		}
+
+		if($type == "P")
+		$query = "SELECT purchases.date as date, news.title as product_name, users.username as user_name FROM purchases
+		JOIN news ON purchases.product_id = news.id
+		JOIN users ON purchases.buyer_id = users.id
+		WHERE buyer_id='$id' ORDER BY purchases.id DESC LIMIT " . (($page - 1) * $rows_per_page) . ", $rows_per_page";
+		else
+		$query = "SELECT purchases.date as date, news.title as product_name, users.username as user_name FROM purchases
+		JOIN news ON purchases.product_id = news.id
+		JOIN users ON purchases.seller_id = users.id
+		WHERE seller_id='$id' ORDER BY purchases.id DESC LIMIT " . (($page - 1) * $rows_per_page) . ", $rows_per_page";
+
+		$result = mysql_query($query);
+
+		$result = db_result_to_array($result);
+
+		return $result;
+	}
 
 	function get_admin_edit_posts($id)
 	{

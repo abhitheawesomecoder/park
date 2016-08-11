@@ -1,4 +1,4 @@
-<? 
+<?
 	// --- PERMALINK --- //
 	$permalink_cat_query = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $permalink_cat_row = mysql_fetch_array($permalink_cat_query);
 	if($settings['permalink'] == '1') {
@@ -70,13 +70,14 @@ $( document ).ready(function() {
 
 		product_id = $( "#product_id" ).val();
 		seller_id = $( "#seller_id" ).val();
-
+		buyer_id = $("#member_id").val();
 		console.log(product_id);
 		console.log(seller_id);
 
 		data = new FormData();
     data.append( 'product_id', product_id );
 		data.append( 'seller_id', seller_id );
+		data.append( 'buyer_id', buyer_id );
 
 		data.append( 'buy_product', true);
 		var URL = "../sources/mouse_auth.php";
@@ -121,6 +122,7 @@ $( document ).ready(function() {
 });
 
 </script>
+<input type="hidden" id="member_id" value="<?php echo $members["id"] ?>" >
   	<div style="text-align:center">
       <button onclick="window.location.href='http://thai-park.com/view/messages/new'" style="background-color: orange;border-color: orange;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Contact seller</button>
 			<button id="buynow" style="background-color: #53a93f;border-color: #53a93f;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Buy now!</button>

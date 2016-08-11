@@ -289,7 +289,7 @@ switch($view) {
 	break;
 }
 
-$arr = array('index','popular','users','cat','messages','search','news','pages','login','signup','account','social.password','upload','meme','delete_account','admin','adults_page','myproducts','verify');
+$arr = array('index','popular','users','cat','messages','search','news','pages','login','signup','account','social.password','upload','meme','delete_account','admin','adults_page','myproducts','verify','sells','purchases');
 if(!in_array($view,$arr)) die("<html><head><meta charset='utf-8'></head><body>This Page Don't Work.</body></html>");
 
 // GEOIP LOCATION

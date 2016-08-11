@@ -16,7 +16,7 @@ if($_POST['buy_product']){
 	// check if user has entered allthe info if not return error message
 	// save prodct id seller id and buyer id return success message
 
-	$buyer_id = $_SESSION['username'];
+	$buyer_id = $_POST['buyer_id'];
 	$product_id = $_POST['product_id'];
 	$seller_id = $_POST['seller_id'];
 
