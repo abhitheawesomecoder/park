@@ -16,11 +16,11 @@
   <table style="border-collapse:collapse; border: 1px solid #E5E5E5; background-color: #FFF;width: 97%;" border="1" cellpadding="3" cellspacing="1">
   <tr style="padding: 5px;background: gray;color: #fff;">
 
-  <td class="tdcheck" style="font-size: 14px;"><strong><?=$LANG['TITLE_POST_TITLE'];?></strong></td>
-  <td class="tdcheck" style="font-size: 14px;"><strong><?=$LANG['TITLE_CATEGORY'];?></strong></td>
+  <td class="tdcheck" style="font-size: 14px;"><strong>Product Title</strong></td>
+  <td class="tdcheck" style="font-size: 14px;padding-right: 10px;"><strong>Category</strong></td>
 
-  <td class="tdcheck" style="font-size: 14px;"><strong><?=$LANG['TITLE_DATE'];?></strong></td>
-  <td class="tdcheck" style="font-size: 14px;width: 110px;"><strong><?=$LANG['TITLE_ACTIVE_INACTIVE'];?></strong></td>
+  <td class="tdcheck" style="font-size: 14px;"><strong>Date</strong></td>
+  <td class="tdcheck" style="font-size: 14px;width: 110px;"><strong>Active/Inactive</strong></td>
   <td class="tdcheck" style="height: 30px; font-size: 14px;"><strong><?=$LANG['TITLE_FUNCTION'];?></strong></td>
   </tr>
 

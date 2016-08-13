@@ -1,6 +1,33 @@
 <?  $THEME_CONTENT_WRAP_RIGHT = 'off';  ?>
 <div class="Container_Page">
 
+<style>
+.tdcheck{
+  padding-right: 7px;
+}
+</style>
+<script>
+$( document ).ready(function() {
+
+    $('.fancybox').fancybox({
+			afterLoad : function() {
+		//	$("#product_title_modal").text($("#product_title").text());
+
+			},
+				helpers : {
+					title : null,
+					overlay : {
+						css : {
+							'background-color' : '#eee',
+							opacity    : 0.5
+						}
+					}
+				}
+			});
+});
+
+</script>
+
 <form id="setting">
 
   <div id="red_table_media"> <? $table_name = "news"; ?>
@@ -16,12 +43,12 @@
   <table style="border-collapse:collapse; border: 1px solid #E5E5E5; background-color: #FFF;width: 97%;" border="1" cellpadding="3" cellspacing="1">
   <tr style="padding: 5px;background: gray;color: #fff;">
 
-  <td class="tdcheck" style="font-size: 14px;"><strong><?=$LANG['TITLE_POST_TITLE'];?></strong></td>
-  <td class="tdcheck" style="font-size: 14px;"><strong><?=$LANG['TITLE_CATEGORY'];?></strong></td>
+  <td class="tdcheck" style="font-size: 14px;">Product Title</strong></td>
+  <td class="tdcheck" style="font-size: 14px;"><strong>Seller</strong></td>
 
-  <td class="tdcheck" style="font-size: 14px;"><strong><?=$LANG['TITLE_DATE'];?></strong></td>
-  <td class="tdcheck" style="font-size: 14px;width: 110px;"><strong><?=$LANG['TITLE_ACTIVE_INACTIVE'];?></strong></td>
-  <td class="tdcheck" style="height: 30px; font-size: 14px;"><strong><?=$LANG['TITLE_FUNCTION'];?></strong></td>
+  <td class="tdcheck" style="font-size: 14px;"><strong>Date</strong></td>
+  <td class="tdcheck" style="font-size: 14px;width: 110px;"><strong>Address</strong></td>
+  <td class="tdcheck" style="height: 30px; font-size: 14px;"><strong>Shipped</strong></td>
   </tr>
 
 
@@ -30,24 +57,40 @@
   <? $user_query = mysql_query("SELECT * FROM users WHERE id=".$media['author'].""); $user_row = mysql_fetch_row($user_query); $cat_query2 = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row2 = mysql_fetch_row($cat_query2); ?>
   <tr>
 
-  <td class="tdcheck"><a class="td_link" href="<?=$root;?><? $cat_query = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row = mysql_fetch_row($cat_query); if($cat_row['2'] == '') { $cat_row = 'other'; }else{ $cat_row=$cat_row['2']; } if($SETTINGS['permalink'] == 'gag') { echo "/gag/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat') { echo "/".$cat_row."/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat_slugify') { echo "/".$cat_row."/".slugify($media['title']); } ?>" target="_blank"><?=$media['title']?></a></td>
-  <td class="tdcheck"><?=$cat_row2['1'];?></td>
+  <td class="tdcheck"><?=$media['product_name']?></td>
+  <td class="tdcheck"><?php echo $media['user_name']." ";?></td>
 
   <td class="tdcheck">
   <font><?=$media['date']?></font></td>
 
-  <td class="tdcheck" style="width: 94px;">
-  <? if($media['status'] == 'on') { ?>
-  <a href="<?=$root;?>/view/myproducts/<?=$_GET['action'];?>/inactive/<?=$media['id'];?>" style="font-size: 12px;color: #fff;width: 62px;background: #D80707;padding: 3px 10px;border: 1px solid #AD1515;border-radius: 5px;cursor: pointer;margin-left: 9px;">Set Inactive</a>
-  <? } elseif($media['status'] == 'off') { ?>
-  <a href="<?=$root;?>/view/myproducts/<?=$_GET['action'];?>/active/<?=$media['id'];?>" style="font-size: 12px;color: #fff;width: 52px;background: #3EAC0A;padding: 3px 15px;border: 1px solid #2D8603;border-radius: 5px;cursor: pointer;margin-left: 9px;">Set Active</a>
-  <? } ?>
-  </td>
+  <td><a class="fancybox" href="#inline<?php echo $media['id']; ?>" style="font-size: 12px;color: #fff;width: 52px;background: #3EAC0A;padding: 3px 15px;border: 1px solid #2D8603;border-radius: 5px;cursor: pointer;margin-left: 9px;">Address</a></td>
+  <div id="inline<?php echo $media['id']; ?>" style="width:400px;display: none;text-align: center;">
+		<h3 id="product_title_modal"></h3>
+
+			<br>
+
+    <p><?php echo $media['address_line1']; ?></p>
+    <p><?php echo $media['address_line2']; ?></p>
+    <p><?php echo $media['city']; ?></p>
+    <p><?php echo $media['state']; ?></p>
+    <p><?php echo $media['zip']; ?></p>
+
+			<br>
+	  <div >
+			<button onclick="javascript:jQuery.fancybox.close();" style="background-color: green;border-color: green;padding: 5px 20px;font-weight: bold;color: #fff;" type="button" >Done</button>
+
+		</div>
+
+	</div>
+
+	</div>
 
   <td class="tdcheck" style="width: 94px;">
-  <div class="btn-group btn-group-sm">
-  <a href="<?=$root;?>/view/myproducts/<?=$_GET['action'];?>/delete/<?=$media['id'];?>" onclick="return confirm('<?=$LANG['confirm_to_delete_this_post'];?>');" class="btn_td btn-danger"><i class="fa fa-times"></i></a>
-  </div>
+    <? if($media['shipped']) { ?>
+    <a style="font-size: 12px;color: #fff;width: 52px;background: #3EAC0A;padding: 3px 15px;border: 1px solid #2D8603;border-radius: 5px;cursor: pointer;margin-left: 9px;">Sent</a>
+    <? } else{ ?>
+    <a style="font-size: 12px;color: #fff;width: 62px;background: #D80707;padding: 3px 10px;border: 1px solid #AD1515;border-radius: 5px;cursor: pointer;margin-left: 9px;" >Not sent</a>
+    <? } ?>
   </td>
   </tr>
   <? endforeach; ?>

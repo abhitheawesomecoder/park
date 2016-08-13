@@ -71,8 +71,7 @@ $( document ).ready(function() {
 		product_id = $( "#product_id" ).val();
 		seller_id = $( "#seller_id" ).val();
 		buyer_id = $("#member_id").val();
-		console.log(product_id);
-		console.log(seller_id);
+
 
 		data = new FormData();
     data.append( 'product_id', product_id );
@@ -141,7 +140,7 @@ $( document ).ready(function() {
 			<button onclick="javascript:jQuery.fancybox.close();" style="background-color: red;border-color: red;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">No</button>
 			<button id="buy_confirm" style="background-color: green;border-color: green;padding: 5px 20px;font-weight: bold;color: #fff;" type="button" >Yes</button>
 
-		</div
+		</div>
 
 	</div>
 
