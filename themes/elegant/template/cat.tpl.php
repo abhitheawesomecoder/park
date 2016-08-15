@@ -13,7 +13,7 @@ $news = get_cat_news($cat_id); ?>
 <div id="container">
 
 <? $i = 7;
-foreach(array_slice($news, $startResults, $resultsPerPage) as $media): 
+foreach(array_slice($news, $startResults, $resultsPerPage) as $media):
 ?>
 <div class="box">
 <a href="<?=$root;?><? $cat_query = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row = mysql_fetch_row($cat_query); if($cat_row['2'] == '') { $cat_row = 'other'; }else{ $cat_row=$cat_row['2']; } if($SETTINGS['permalink'] == 'gag') { echo "/gag/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat') { echo "/".$cat_row."/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat_slugify') { echo "/".$cat_row."/".slugify($media['title']); } ?>">
@@ -34,9 +34,7 @@ foreach(array_slice($news, $startResults, $resultsPerPage) as $media):
 </ul>
 </div>
 <? } ?>
-<? } else {
-		include('nsfw.tpl.php');
-   } ?>
+
 
 
 </div>
