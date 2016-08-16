@@ -62,6 +62,8 @@
 $( document ).ready(function() {
 	$( "#buynow" ).click(function() {
 
+		// if user not logged in then redirect to login else click event
+
 		$("#hidden_buy_now").click();
 
 	});
@@ -95,6 +97,7 @@ $( document ).ready(function() {
 			//	$('#formpart2').show();
 			//	$("#course_id").html(json.html);
 //  return json_encode([ "html" => $html ]);
+// forward to purchases
 			})
 				.catch(function(error){
 					  $.fancybox.close();

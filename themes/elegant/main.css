@@ -28,7 +28,7 @@ body{
 @media all and (min-width: 1264px) {
 	.display_header {
 		width: 1130px;
-		
+
 	}
 }
 .Reg_Error {
@@ -95,7 +95,7 @@ header#Theme_Header_Nav {
 }
 header#Theme_Header_Nav .Theme_Header_Nav_Wrap {
     padding-right: 0px!important;
-  	width: 1147px;
+  	width: 1197px;
  	margin: 0 auto;
     height: 40px;
     padding-top: 2.5px;
@@ -103,7 +103,7 @@ header#Theme_Header_Nav .Theme_Header_Nav_Wrap {
     position: relative;
 }
 .display_header {
-	
+
 }
 header#Theme_Header_Nav h1 a {
 	display: block;
@@ -223,7 +223,7 @@ a.upload {
 }
 .upload_title {
 	margin-left: 30px;
-	
+
 }
 .upload_icon {
 	background: url('images/upload-icon.png');
@@ -231,8 +231,8 @@ a.upload {
     height: 18px;
     border: 1px solid #33ad1f;
     background-size: 20px 18px;
-    content: '';  
-    position: absolute;      
+    content: '';
+    position: absolute;
     margin-top: 5px;
 }
 .sign_in {
@@ -450,7 +450,7 @@ color: gray;
 	 overflow: visible;
 }
 @font-face {
-    font-family: 'bpg_nino_mtavrulibold';    
+    font-family: 'bpg_nino_mtavrulibold';
     src: url('fonts/bpg_nino_mtavruli_bold.eot');
     src: url('fonts/bpg_nino_mtavruli_bold.eot?#iefix') format('embedded-opentype'),
          url('fonts/bpg_nino_mtavruli_bold.svg#bpg_nino_mtavrulibold') format('svg');
@@ -841,7 +841,7 @@ h2.sidebar-title {
 	margin-left: 70px;
 }
 .profile_wrapper_topmenu {
-	clear: both;	
+	clear: both;
 }
 .profile_wrapper_topmenu ul {
 	list-style-type: none;
@@ -1110,10 +1110,10 @@ select {
 }
 .box-media-title {
 	width: 280px;
-	font-family: Arial, Helvetica, sans-serif; 
-	font-weight: bold; 
-	font-size: 15px; 
-	padding: 8px 0px; 
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 8px 0px;
 	margin-bottom: 5px;
 }
 .others_popup {
@@ -1367,7 +1367,7 @@ select {
 	border-radius:0 3px 3px 0;
 }
 .votes_count {
-	color: #999;	
+	color: #999;
 	cursor: pointer;
 }
 .post-nav {
@@ -1749,7 +1749,7 @@ ul.meme-grid a:hover .title-container{
 	opacity:1;
 }
 .container_meme .row {
-	
+
 }
 .container_meme .row .span8 {
 	width: 600px;
@@ -2343,12 +2343,12 @@ border-bottom-right-radius: 3px;
 }
 
 #clock.light:after{
-	
+
 }
 
 #clock.light .digits div span{
 	background-color:#272e38;
-	border-color:#272e38;	
+	border-color:#272e38;
 }
 
 #clock.light .digits div.dots:before,
@@ -2382,7 +2382,7 @@ border-bottom-right-radius: 3px;
 
 #clock.dark .digits div span{
 	background-color:#cacaca;
-	border-color:#cacaca;	
+	border-color:#cacaca;
 }
 
 #clock.dark .alarm{
@@ -2670,7 +2670,7 @@ div#colorpicker div.clear
     height:0;
     font-size:0;
 }
-        
+
 div#colorpicker div#colorContainer
 {
     float: left;
@@ -2712,7 +2712,7 @@ div#colorpicker div#bgBox
 div.transChooser
 {
     background: transparent url(images/transChooser.gif);
-}     
+}
 span.colorChooser
 {
     width: 37px;
@@ -2727,7 +2727,7 @@ span.colorChooser
     overflow: visible;
     vertical-align: middle;
     z-index:1;
-}     
+}
 
 
 
