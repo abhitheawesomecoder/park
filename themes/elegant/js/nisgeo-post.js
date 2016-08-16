@@ -95,6 +95,37 @@ function NISGEO_POST_BUTTON() {
 
 	}
 
+	data = new FormData();
+	data.append( 'check_user_info', true);
+	var URL = "/sources/nisgeo-post.php";
+  var code = 0;
+	 fetch(URL, {
+		method: 'post',
+		mode: 'no-cors',
+		credentials: "same-origin",
+		body: data
+	}).then(function(response){
+
+				return response.json();
+		})  .then(function(json){
+
+			console.log(json.code);
+			console.log(json.alert);
+			if(json.code != 0){
+				alert(json.alert);
+				code = json.code;
+				$(".inner-loader").css("display", "none");
+
+			}
+
+
+		})
+			.catch(function(error){
+
+
+			});
+	if(code != 0 )
+	return false;
 
 	// SELECT Tab Selectors
 

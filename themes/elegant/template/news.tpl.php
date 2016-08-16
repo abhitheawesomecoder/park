@@ -69,8 +69,42 @@ $( document ).ready(function() {
 
 		if(buyer_id == "")
 			window.location.href='http://thai-park.com/view/login';
-		else
-		$("#hidden_buy_now").click();
+		else{
+
+		 data = new FormData();
+		 data.append( 'check_user_info', true);
+		 var URL = "../sources/nisgeo-post.php";
+
+			fetch(URL, {
+			 method: 'post',
+			 mode: 'no-cors',
+			 credentials: "same-origin",
+			 body: data
+		 }).then(function(response){
+
+					 return response.json();
+			 })  .then(function(json){
+
+				 console.log(json.code);
+				 console.log(json.alert);
+				 if(json.code != 0){
+					 alert(json.alert);
+				 }
+				 else {
+				 	 $("#hidden_buy_now").click();
+				 }
+
+			 })
+				 .catch(function(error){
+
+
+				 });
+
+
+
+
+		}
+
 
 	});
 
@@ -131,6 +165,7 @@ $( document ).ready(function() {
 
 </script>
 <input type="hidden" id="member_id" value="<?php echo $members["id"] ?>" >
+
   	<div style="text-align:center">
       <button onclick="window.location.href='http://thai-park.com/view/messages/new'" style="background-color: orange;border-color: orange;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Contact seller</button>
 			<button id="buynow" style="background-color: #53a93f;border-color: #53a93f;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Buy now!</button>
