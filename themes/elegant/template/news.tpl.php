@@ -60,10 +60,16 @@
 <script>
 
 $( document ).ready(function() {
+
+	buyer_id = $("#member_id").val();
+
 	$( "#buynow" ).click(function() {
 
 		// if user not logged in then redirect to login else click event
 
+		if(buyer_id == "")
+			window.location.href='http://thai-park.com/view/login';
+		else
 		$("#hidden_buy_now").click();
 
 	});
@@ -72,7 +78,6 @@ $( document ).ready(function() {
 
 		product_id = $( "#product_id" ).val();
 		seller_id = $( "#seller_id" ).val();
-		buyer_id = $("#member_id").val();
 
 
 		data = new FormData();
@@ -98,6 +103,7 @@ $( document ).ready(function() {
 			//	$("#course_id").html(json.html);
 //  return json_encode([ "html" => $html ]);
 // forward to purchases
+		window.location.href='http://www.thai-park.com/view/purchases';
 			})
 				.catch(function(error){
 					  $.fancybox.close();
