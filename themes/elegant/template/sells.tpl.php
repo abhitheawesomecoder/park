@@ -17,6 +17,8 @@
 <style>
 .tdcheck{
   padding-right: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 </style>
 <script>

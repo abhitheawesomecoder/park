@@ -648,12 +648,12 @@ include($document.'/sources/random_functions.php');
 		}
 
 		if($type == "P")
-		$query = "SELECT purchases.id as pid, purchases.date as date, news.title as product_name, users.username as user_name, address_line1 , address_line2 , city , state , zip, country, shipped FROM purchases
+		$query = "SELECT paypal_id, holder_name, bank_name, iban, bic_swift, purchases.id as pid, purchases.date as date, news.title as product_name, users.username as user_name, address_line1 , address_line2 , city , state , zip, country, shipped FROM purchases
 		JOIN news ON purchases.product_id = news.id
 		JOIN users ON purchases.seller_id = users.id
 		WHERE buyer_id='$id' ORDER BY purchases.id DESC LIMIT " . (($page - 1) * $rows_per_page) . ", $rows_per_page";
 		else
-		$query = "SELECT purchases.id as pid,purchases.date as date, news.title as product_name, users.username as user_name, address_line1 , address_line2 , city , state , zip, country, shipped FROM purchases
+		$query = "SELECT paypal_id, holder_name, bank_name, iban, bic_swift, purchases.id as pid,purchases.date as date, news.title as product_name, users.username as user_name, address_line1 , address_line2 , city , state , zip, country, shipped FROM purchases
 		JOIN news ON purchases.product_id = news.id
 		JOIN users ON purchases.buyer_id = users.id
 		WHERE seller_id='$id' ORDER BY purchases.id DESC LIMIT " . (($page - 1) * $rows_per_page) . ", $rows_per_page";

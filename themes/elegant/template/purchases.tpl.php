@@ -4,6 +4,8 @@
 <style>
 .tdcheck{
   padding-right: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 </style>
 <script>
@@ -65,7 +67,7 @@ $( document ).ready(function() {
 
   <td><a class="fancybox" href="#inline<?php echo $media['id']; ?>" style="font-size: 12px;color: #fff;width: 52px;background: #3EAC0A;padding: 3px 15px;border: 1px solid #2D8603;border-radius: 5px;cursor: pointer;margin-left: 9px;">Address</a></td>
   <div id="inline<?php echo $media['id']; ?>" style="width:400px;display: none;text-align: center;">
-		<h3 id="product_title_modal"></h3>
+		<h3 id="product_title_modal">Address</h3>
 
 			<br>
 
@@ -74,8 +76,20 @@ $( document ).ready(function() {
     <p><?php echo $media['city']; ?></p>
     <p><?php echo $media['state']; ?></p>
     <p><?php echo $media['zip']; ?></p>
+  <br>
+    <h3>Payment Details</h3>
 
-			<br>
+      <br>
+
+    <p><b>Paypal Id : </b><?php echo $media['paypal_id']; ?></p>
+    <p><b>Holder Name : </b><?php echo $media['holder_name']; ?></p>
+    <p><b>Bank Name : </b><?php echo $media['bank_name']; ?></p>
+    <p><b>IBAN : </b><?php echo $media['iban']; ?></p>
+    <p><b>BIC/SWIFT : </b><?php echo $media['bic_swift']; ?></p>
+
+      <br>
+
+
 	  <div >
 			<button onclick="javascript:jQuery.fancybox.close();" style="background-color: green;border-color: green;padding: 5px 20px;font-weight: bold;color: #fff;" type="button" >Done</button>
 
