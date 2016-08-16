@@ -206,6 +206,7 @@ div.search-form input#search_go {
 }
 #header_additional_div {
 	float: left;
+	margin-left: -30px;
 }
 .upload {
     margin-top: 5px;
