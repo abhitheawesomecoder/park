@@ -14,59 +14,13 @@ include_once ('../includes/db_connect.php');
 include_once ('functions.php');
 include_once ('random_functions.php');
 
+
+// sepertate this code into procedural and call the function to check the validation
 if($_POST['check_user_info']){
-	$user_result = mysql_query("SELECT * FROM users WHERE id='".$members['id']."'");
-	$user = mysql_fetch_array($user_result);
-	$code = 0;
-  $alert = "";
-	if($user["first_name"] == "")
-	$code = 1;
-	elseif ($user["last_name"] == "") {
-	$code = 2;
-}elseif ($user["address_line1"] == "") {
-	if ($user["address_line2"] == "") {
-		$code = 3;
-	}
-}elseif ($user["city"] == "") {
-	$code = 4;
-}elseif ($user["state"] == "") {
-	$code = 5;
-}elseif ($user["zip"] == "") {
-	$code = 6;
-}elseif ($user["paypal_id"] == "") {
-		if ($user["holder_name"] == "") {
-			$code = 7;
-		}elseif ($user["bank_name"] == "") {
-			$code = 8;
-		}elseif ($user["iban"] == "") {
-			$code = 9;
-		}elseif ($user["bic_swift"] == "") {
-			$code = 10;
-		}
-	}
-	switch($code){
-		case 1: $alert = "Add first name to your profile";
-		break;
-		case 2: $alert = "Add last name to your profile";
-		break;
-		case 3: $alert = "Add address to your profile";
-		break;
-		case 4: $alert = "Add city to your profile";
-		break;
-		case 5: $alert = "Add state to your profile";
-		break;
-		case 6: $alert = "Add zip code to your profile";
-		break;
-		case 7: $alert = "Add holder name to your bank details";
-		break;
-		case 8: $alert = "Add bank name to your bank details";
-		break;
-		case 9: $alert = "Add IBAN to your bank details";
-		break;
-		case 10: $alert = "Add BIC/SWIFT to your bank details";
-		break;
-	}
-	echo json_encode([ "code" => $code, "alert" => $alert ]);
+
+	$ret = check_profile_validation($members['id']);
+	echo json_encode($ret);
+
 	exit();
 }
 
@@ -79,6 +33,13 @@ $product_price = $_REQUEST["product_price"];
 $product_currency = $_REQUEST["product_currency"];
 
 if($members['username'] != '') {
+	//call function and check validation
+	$ret = check_profile_validation($members['id']);
+	if($ret['code'] != 0){
+		$ret['ERROR_SESSION'] = 2;
+		echo json_encode($ret);
+		exit();
+	}
 	if($_REQUEST['tab_selector'] == 'nisgeo_post_tab_1') {
 	  $rand = $rand;
 	  $url_REQUEST = mysql_real_escape_string($_REQUEST['img_url']);

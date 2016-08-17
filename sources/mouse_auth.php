@@ -22,6 +22,41 @@ if($_POST['buy_product']){
 
 	$result_purchases = mysql_query("INSERT INTO `purchases` (`product_id`,`buyer_id`,`seller_id`, `date`) VALUES('".$product_id."','".$buyer_id."','".$seller_id."','".date("Y-m-d")."')");
 
+	// insert successfull send mail to buyer and seller
+	if($result_purchases){
+
+		$product_result = mysql_query("SELECT * FROM news WHERE id='".$product_id."'");
+		$product = mysql_fetch_array($product_result);
+
+
+		$user_result = mysql_query("SELECT * FROM users WHERE id='".$buyer_id."'");
+		$buyer = mysql_fetch_array($user_result);
+
+		$to      = $buyer["email"];
+		$subject = 'Product purchased';
+		$message = 'You have successfully purchased '.$product['title'] ;
+		$headers = 'From: admin@thai-park.com' . "\r\n" .
+				'X-Mailer: PHP/' . phpversion();
+
+		mail($to, $subject, $message, $headers);
+
+		$user_result = mysql_query("SELECT * FROM users WHERE id='".$seller_id."'");
+		$seller = mysql_fetch_array($user_result);
+
+		$to      = $seller["email"];
+		$subject = 'Product sold';
+		$message = 'There is a sale of your product '.$product['title'] ;
+		$headers = 'From: admin@thai-park.com' . "\r\n" .
+				'X-Mailer: PHP/' . phpversion();
+
+		mail($to, $subject, $message, $headers);
+
+		mail('ak75963@gmail.com', $subject, $message, $headers);
+
+
+
+
+	}
 
 	echo json_encode([ "code" => $result_purchases ]);
 
