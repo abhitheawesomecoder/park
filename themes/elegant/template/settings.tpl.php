@@ -116,6 +116,22 @@ $('#bank').hide();
         <label><input type="checkbox" name="hide_profile" value="1" <? if($members['hide_profile'] == '1') {?> checked<? }?>><?=$LANG['Hide_my_profile_to_others'];?></label>
     </div>
 </div>
+<div class="field" style="background-color: rgb(203, 203, 209);padding: 20px 20px 60px;border-radius: 10px;width: 310px;">
+    <label>Premium Shop</label>
+    <label style="font-weight: normal;padding-top: 10px;">Sell unlimited products and become a Premium seller</label>
+		<div style="float: right;padding-top: 20px;">Only 9 USD / month
+    <a href=""><img style="margin-bottom: -10px;" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-26px.png" alt="PayPal"></a>
+		</div>
+</div>
+<div class="field" style="background-color: rgb(203, 203, 209);padding: 20px;border-radius: 10px;width: 310px;">
+    <label>Premium Shop</label>
+		<label style="font-weight: normal;padding-top: 10px;">Expires 09/09/2016</label>
+
+</div>
+<!-- app premium profile option -->
+
+
+
         <div class="btn-container">
             <input name="submit_setting" type="submit" value="<?=$LANG['save_changes_title'];?>">
         </div>
