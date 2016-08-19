@@ -31,7 +31,15 @@
 	}
 	// Session Member Info
 $members = get_members($id);
-	  ?>  <!-- Index Action -->
+	  ?>
+        <form id="paymentform" method="post" action="../sources/process.php?paypal=checkout">
+        <input type="hidden" name="itemname" value="Thai-park Premium Membership" /> 
+        <input type="hidden" name="itemnumber" value="9" /> 
+        <input type="hidden" name="itemdesc" value="Unlimited Products Premium Membership" /> 
+        <input type="hidden" name="itemprice" value="9" /> 
+        <input type="hidden" name="itemQty" value="1" />    
+        </form>
+  <!-- Index Action -->
 <form id="setting" action="" method="POST">
 <h2><?=$LANG['Account_subtitle'];?></h2>
 
@@ -116,11 +124,28 @@ $('#bank').hide();
         <label><input type="checkbox" name="hide_profile" value="1" <? if($members['hide_profile'] == '1') {?> checked<? }?>><?=$LANG['Hide_my_profile_to_others'];?></label>
     </div>
 </div>
+<script>
+$( document ).ready(function() {
+
+    
+
+    $( "#paymentbutton" ).click(function(e) {
+        e.preventDefault();
+          $( "#paymentform" ).submit();
+    });
+
+});
+</script>
+
 <div class="field" style="background-color: rgb(203, 203, 209);padding: 20px 20px 60px;border-radius: 10px;width: 310px;">
     <label>Premium Shop</label>
     <label style="font-weight: normal;padding-top: 10px;">Sell unlimited products and become a Premium seller</label>
 		<div style="float: right;padding-top: 20px;">Only 9 USD / month
-    <a href=""><img style="margin-bottom: -10px;" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-26px.png" alt="PayPal"></a>
+
+        
+
+    <a id="paymentbutton" href=""><img style="margin-bottom: -10px;" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-26px.png" alt="PayPal"></a>
+
 		</div>
 </div>
 <div class="field" style="background-color: rgb(203, 203, 209);padding: 20px;border-radius: 10px;width: 310px;">
