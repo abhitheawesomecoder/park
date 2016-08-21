@@ -1,5 +1,4 @@
 <?php
-
 	class MyPayPal {
 
 		function GetItemTotalPrice($item){
@@ -161,10 +160,10 @@
 				//Check if everything went ok..
 				if("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"])){
 
-					echo '<h2>Success</h2>';
-					echo 'Your Transaction ID : '.urldecode($httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"]);
-					$_SESSION["transation_id"] = $httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"];
-					$_SESSION["expiry_date"] = date('Y-m-d',strtotime('+1 year'));
+				//	echo '<h2>Success</h2>';
+				//	echo 'Your Transaction ID : '.urldecode($httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"]);
+	$_SESSION["transation_id"] = $httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"];
+	$_SESSION["expiry_date"] = date('Y-m-d',strtotime('+1 year'));
 
 					/*
 					//Sometimes Payment are kept pending even when transaction is complete.
@@ -173,7 +172,7 @@
 
 					if('Completed' == $httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"]){
 
-						echo '<div style="color:green">Payment Received! Your product will be sent to you very soon!</div>';
+				//		echo '<div style="color:green">Payment Received! Your product will be sent to you very soon!</div>';
 					}
 					elseif('Pending' == $httpParsedResponseAr["PAYMENTINFO_0_PAYMENTSTATUS"]){
 
@@ -212,6 +211,10 @@
 			$httpParsedResponseAr = $this->PPHttpPost('GetExpressCheckoutDetails', $padata, PPL_API_USER, PPL_API_PASSWORD, PPL_API_SIGNATURE, PPL_MODE);
 
 			if("SUCCESS" == strtoupper($httpParsedResponseAr["ACK"]) || "SUCCESSWITHWARNING" == strtoupper($httpParsedResponseAr["ACK"])){
+
+				
+	echo '<script>window.location.href="http://thai-park.com/view/success"</script>';
+				
 
 				echo '<br /><b>Stuff to store in database :</b><br /><pre>';
 				/*

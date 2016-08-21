@@ -1,0 +1,1 @@
+<h1 style="padding: 100px;color: red;"">Transaction Canceled. Try again later. Click to go to <a href="/">home</a></h1>

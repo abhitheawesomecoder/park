@@ -34,7 +34,7 @@ $members = get_members($id);
 	  ?>
         <form id="paymentform" method="post" action="../sources/process.php?paypal=checkout">
         <input type="hidden" name="itemname" value="Thai-park Premium Membership" />
-        <input type="hidden" name="itemnumber" value="<?php echo $members['id']; ?>" /> 
+        <input type="hidden" name="itemnumber" value="<?php echo $members['id']; ?>" />
         <input type="hidden" name="itemdesc" value="Unlimited Products Premium Membership" />
         <input type="hidden" name="itemprice" value="9" />
         <input type="hidden" name="itemQty" value="1" />
@@ -136,23 +136,30 @@ $( document ).ready(function() {
 
 });
 </script>
+<?php $today = date("Y-m-d"); if((isset($members['expiry_date']))&&($members['expiry_date'] > $today)){ ?>
 
-<div class="field" style="background-color: rgb(203, 203, 209);padding: 20px 20px 60px;border-radius: 10px;width: 310px;">
-    <label>Premium Shop</label>
-    <label style="font-weight: normal;padding-top: 10px;">Sell unlimited products and become a Premium seller</label>
-		<div style="float: right;padding-top: 20px;">Only 9 USD / month
+	<div class="field" style="background-color: rgb(203, 203, 209);padding: 20px;border-radius: 10px;width: 310px;">
+	    <label>Premium Shop</label>
+			<label style="font-weight: normal;padding-top: 10px;">Expires <?php echo $members['expiry_date']; ?></label>
+
+	</div>
+
+<?php }else{ ?>
+
+	<div class="field" style="background-color: rgb(203, 203, 209);padding: 20px 20px 60px;border-radius: 10px;width: 310px;">
+	    <label>Premium Shop</label>
+	    <label style="font-weight: normal;padding-top: 10px;">Sell unlimited products and become a Premium seller</label>
+			<div style="float: right;padding-top: 20px;">Only 9 USD / month
 
 
 
-    <a id="paymentbutton" href=""><img style="margin-bottom: -10px;" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-26px.png" alt="PayPal"></a>
+	    <a id="paymentbutton" href=""><img style="margin-bottom: -10px;" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-26px.png" alt="PayPal"></a>
 
-		</div>
-</div>
-<div class="field" style="background-color: rgb(203, 203, 209);padding: 20px;border-radius: 10px;width: 310px;">
-    <label>Premium Shop</label>
-		<label style="font-weight: normal;padding-top: 10px;">Expires 09/09/2016</label>
+			</div>
+	</div>
 
-</div>
+<?php } ?>
+
 <!-- app premium profile option -->
 
 

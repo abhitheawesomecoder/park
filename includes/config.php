@@ -47,7 +47,7 @@ define('PPL_LANG', 'EN');
 define('PPL_LOGO_IMG', 'http://customphpscript.com/logo.png');
 
 define('PPL_RETURN_URL', 'http://thai-park.com/sources/process.php');
-define('PPL_CANCEL_URL', 'http://thai-park.com/sources/cancel_url.php');
+define('PPL_CANCEL_URL', 'http://thai-park.com/view/cancel');
 
 define('PPL_CURRENCY_CODE', 'USD');
 ?>
