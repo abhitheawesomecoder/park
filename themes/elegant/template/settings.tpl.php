@@ -33,11 +33,11 @@
 $members = get_members($id);
 	  ?>
         <form id="paymentform" method="post" action="../sources/process.php?paypal=checkout">
-        <input type="hidden" name="itemname" value="Thai-park Premium Membership" /> 
-        <input type="hidden" name="itemnumber" value="9" /> 
-        <input type="hidden" name="itemdesc" value="Unlimited Products Premium Membership" /> 
-        <input type="hidden" name="itemprice" value="9" /> 
-        <input type="hidden" name="itemQty" value="1" />    
+        <input type="hidden" name="itemname" value="Thai-park Premium Membership" />
+        <input type="hidden" name="itemnumber" value="<?php echo $members['id']; ?>" /> 
+        <input type="hidden" name="itemdesc" value="Unlimited Products Premium Membership" />
+        <input type="hidden" name="itemprice" value="9" />
+        <input type="hidden" name="itemQty" value="1" />
         </form>
   <!-- Index Action -->
 <form id="setting" action="" method="POST">
@@ -127,7 +127,7 @@ $('#bank').hide();
 <script>
 $( document ).ready(function() {
 
-    
+
 
     $( "#paymentbutton" ).click(function(e) {
         e.preventDefault();
@@ -142,7 +142,7 @@ $( document ).ready(function() {
     <label style="font-weight: normal;padding-top: 10px;">Sell unlimited products and become a Premium seller</label>
 		<div style="float: right;padding-top: 20px;">Only 9 USD / month
 
-        
+
 
     <a id="paymentbutton" href=""><img style="margin-bottom: -10px;" src="https://www.paypalobjects.com/webstatic/en_US/i/btn/png/blue-rect-paypal-26px.png" alt="PayPal"></a>
 

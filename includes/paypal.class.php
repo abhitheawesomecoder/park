@@ -35,7 +35,7 @@
 		}
 
 		function SetExpressCheckout($products, $charges, $noshipping='1'){
-			
+
 			//Parameters for SetExpressCheckout, which will be sent to PayPal
 
 			$padata  = 	'&METHOD=SetExpressCheckout';
@@ -163,6 +163,8 @@
 
 					echo '<h2>Success</h2>';
 					echo 'Your Transaction ID : '.urldecode($httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"]);
+					$_SESSION["transation_id"] = $httpParsedResponseAr["PAYMENTINFO_0_TRANSACTIONID"];
+					$_SESSION["expiry_date"] = date('Y-m-d',strtotime('+1 year'));
 
 					/*
 					//Sometimes Payment are kept pending even when transaction is complete.

@@ -44,10 +44,10 @@ else{
 
 define('PPL_LANG', 'EN');
 
-define('PPL_LOGO_IMG', 'http://www.sanwebe.com/wp-content/themes/sanwebe/img/logo.png');
+define('PPL_LOGO_IMG', 'http://customphpscript.com/logo.png');
 
-define('PPL_RETURN_URL', 'http://localhost/paypal/process.php');
-define('PPL_CANCEL_URL', 'http://localhost/paypal/cancel_url.php');
+define('PPL_RETURN_URL', 'http://thai-park.com/sources/process.php');
+define('PPL_CANCEL_URL', 'http://thai-park.com/sources/cancel_url.php');
 
-define('PPL_CURRENCY_CODE', 'EUR');
+define('PPL_CURRENCY_CODE', 'USD');
 ?>
