@@ -2,6 +2,19 @@
 
 error_reporting(1);
 error_reporting(E_ALL ^ E_NOTICE);
+
+
+		//	$link = $root.'/view/verify/'.$new_id.'~'.$hash.'';
+			$to      = 'ak75963@gmail.com';
+			$subject = 'Thai-park Account Activation';
+			$message = 'Please click the link below to activate your account';
+			$headers = 'From: admin@thai-park.com' . "\r\n" .
+			    'X-Mailer: PHP/' . phpversion();
+
+			$ret = mail($to, $subject, $message, $headers);
+
+			echo $ret;
+
 /*
 $servername = "localhost";
 $username = "root";

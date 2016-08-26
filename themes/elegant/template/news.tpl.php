@@ -165,11 +165,18 @@ $( document ).ready(function() {
 
 </script>
 <input type="hidden" id="member_id" value="<?php echo $members["id"] ?>" >
-
+<? $extra_menu2 = mysql_query("SELECT * FROM users WHERE id='".$media['author']."'");
+	 $remove_button2 = mysql_fetch_array($extra_menu2); ?>
   	<div style="text-align:center">
-      <button onclick="window.location.href='http://thai-park.com/view/messages/new'" style="background-color: orange;border-color: orange;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Contact seller</button>
+
+<?php if($members["id"] == $remove_button2['id']){ ?>
+
+<?php }else{ ?>
+
+	    <button onclick="window.location.href='http://thai-park.com/view/messages/new'" style="background-color: orange;border-color: orange;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Contact seller</button>
 			<button id="buynow" style="background-color: #53a93f;border-color: #53a93f;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Buy now!</button>
-      <a id="hidden_buy_now" style="display:none" class="fancybox" href="#inline1" title="Lorem ipsum dolor sit amet">test</a>
+<?php } ?>
+	    <a id="hidden_buy_now" style="display:none" class="fancybox" href="#inline1" title="Lorem ipsum dolor sit amet">test</a>
 		</div>
 
 	<div id="inline1" style="width:400px;display: none;text-align: center;">
@@ -194,8 +201,7 @@ $( document ).ready(function() {
 
  <div style="width: 630px;height: 100px;">
 	<div style="padding:20px">
-		<? $extra_menu2 = mysql_query("SELECT * FROM users WHERE id='".$media['author']."'");
-		   $remove_button2 = mysql_fetch_array($extra_menu2); ?>
+
 			 <input type="hidden" id="seller_id" value="<?php echo $remove_button2['id'] ?>" >
 		 <div style="float: left;margin-right: 10px;"><img src="http://thai-park.com/uploads/avatars/<? echo $remove_button2['photo']; ?>" alt="Avatar" height="80" width="80"></img> </div>
 		 <div style="float: left;">

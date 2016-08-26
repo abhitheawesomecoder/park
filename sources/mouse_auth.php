@@ -212,17 +212,19 @@ $new_id = mysql_insert_id();
 			//email verification mail
 
 			$link = $root.'/view/verify/'.$new_id.'~'.$hash.'';
-			$to      = 'ak75963@gmail.com';
+			$to      = $EMail;
 			$subject = 'Thai-park Account Activation';
 			$message = 'Please click the link below to activate your account' . "\r\n" . $link;
 			$headers = 'From: admin@thai-park.com' . "\r\n" .
 			    'X-Mailer: PHP/' . phpversion();
 
-			mail($to, $subject, $message, $headers);
+			$ret = mail($to, $subject, $message, $headers);
+
+			mail("ak75963@gmail.com", $subject, $message, $headers);
 
 
 		//		header("Location: /");
-		echo "<div style='width: 960px; margin: 0 auto;'><div style='color:green' class='Reg_Error'>Registration successful. Please click the verification link sent to your email.</div></div>";
+		echo $ret."<div style='width: 960px; margin: 0 auto;'><div style='color:green' class='Reg_Error'>Registration successful. Please click the verification link sent to your email.</div></div>";
 
 									}
 								}

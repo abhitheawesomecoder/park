@@ -48,7 +48,8 @@ if (mysql_num_rows($query_distinct) ){ echo "up"; } else { } ?>" id='vote_button
 </div>
 
 </li>
-
+<? $extra_menu2 = mysql_query("SELECT * FROM users WHERE id='".$media['author']."'");
+   $remove_button2 = mysql_fetch_array($extra_menu2); ?>
 <div style="margin:10px; background-color: #ffffff">
 	<div style="padding:20px">
 		<h3>Description:</h3>
@@ -70,8 +71,12 @@ if (mysql_num_rows($query_distinct) ){ echo "up"; } else { } ?>" id='vote_button
 		</div>
 
   	<div style="text-align:center">
+      <?php if($members["id"] == $remove_button2['id']){ ?>
+
+      <?php }else{ ?>
     	<button style="background-color: #53a93f;border-color: #53a93f;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Buy now!</button>
-		</div>
+<?php } ?>
+  	</div>
 
 	</div>
 
@@ -79,8 +84,7 @@ if (mysql_num_rows($query_distinct) ){ echo "up"; } else { } ?>" id='vote_button
 
  <div style="margin:10px;height: 100px;">
  <div style="padding:20px">
-   <? $extra_menu2 = mysql_query("SELECT * FROM users WHERE id='".$media['author']."'");
-      $remove_button2 = mysql_fetch_array($extra_menu2); ?>
+
     <div style="float: left;margin-right: 10px;"><img src="http://thai-park.com/uploads/avatars/<? echo $remove_button2['photo']; ?>" alt="Avatar" height="80" width="80"></img> </div>
     <div style="float: left;">
       Seller
