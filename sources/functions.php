@@ -1193,6 +1193,44 @@ function check_profile_validation($id){
 	return [ "code" => $code, "alert" => $alert ];
 }
 
+function check_profile_validation_buyer($id){
+
+	$user_result = mysql_query("SELECT * FROM users WHERE id='".$id."'");
+	$user = mysql_fetch_array($user_result);
+	$code = 0;
+	$alert = "";
+	if($user["first_name"] == "")
+	$code = 1;
+	elseif ($user["last_name"] == "") {
+	$code = 2;
+}elseif ($user["address_line1"] == "") {
+	if ($user["address_line2"] == "") {
+		$code = 3;
+	}
+}elseif ($user["city"] == "") {
+	$code = 4;
+}elseif ($user["state"] == "") {
+	$code = 5;
+}elseif ($user["zip"] == "") {
+	$code = 6;
+}
+	switch($code){
+		case 1: $alert = "Add first name to your profile";
+		break;
+		case 2: $alert = "Add last name to your profile";
+		break;
+		case 3: $alert = "Add address to your profile";
+		break;
+		case 4: $alert = "Add city to your profile";
+		break;
+		case 5: $alert = "Add state to your profile";
+		break;
+		case 6: $alert = "Add zip code to your profile";
+		break;	
+	}
+	return [ "code" => $code, "alert" => $alert ];
+}
+
 function _GET($label='',$default='',$set_default=false){
 
 		$value=$default;

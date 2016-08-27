@@ -18,7 +18,7 @@ include_once ('random_functions.php');
 // sepertate this code into procedural and call the function to check the validation
 if($_POST['check_user_info']){
 
-	$ret = check_profile_validation($members['id']);
+	$ret = check_profile_validation_buyer($members['id']);
 	echo json_encode($ret);
 
 	exit();
