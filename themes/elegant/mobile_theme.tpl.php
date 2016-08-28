@@ -14,12 +14,14 @@
 <style>
 .fixed { position:fixed; }
 </style>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
+<script  type='text/javascript' src="http://thai-park.com/themes/elegant/js/fancybox.js?v=2.0.6"></script>
 </head>
 
 
 <body>
 <?=analytics;?>
-<div id="fb-root"></div> 
+<div id="fb-root"></div>
 <div class="snap-drawers">
 <div class="snap-drawer snap-drawer-left" <? if($view == 'login') { echo "style='display: none;'"; } elseif($view == 'signup') { echo "style='display: none;'"; } ?>>
 <? if($_SESSION['username']) { ?>
@@ -66,9 +68,7 @@
 
 </div>
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js"></script>
 <script type='text/javascript' src='http://code.jquery.com/jquery-git.js'></script>
-
 <script src="<?=$root;?>/themes/<?=$SETTINGS['theme'];?>/js/cookie.js"></script>
 <script src="<?=$root;?>/themes/<?=$SETTINGS['theme'];?>/js/jquery.backstretch.min.js"></script>
 
@@ -85,7 +85,7 @@
     $(window).resize(function(){
         position_elements();
     });
-	
+
     function position_elements(){
         $('#bgimage').css('height', $(window).height());
         if($(window).height() > $('.form-signin').height() + 100){
@@ -99,7 +99,7 @@
 function showMe (box) {
         var chboxs = document.getElementsByName("source");
         var vis = "none";
-        for(var i=0;i<chboxs.length;i++) { 
+        for(var i=0;i<chboxs.length;i++) {
             if(chboxs[i].checked){
              vis = "block";
                 break;
@@ -107,8 +107,8 @@ function showMe (box) {
         }
         document.getElementById(box).style.display = vis;
 }
-	
-	
+
+
 <!--
 function swap(site, fb) {
     document.getElementById(site).style.display = 'block';
@@ -124,12 +124,12 @@ $('.comments-option').click(function(){
 
 
 
-//<![CDATA[ 
+//<![CDATA[
 function getDocHeight(doc) {
     doc = doc || document;
     // from http://stackoverflow.com/questions/1145850/get-height-of-entire-document-with-javascript
     var body = doc.body, html = doc.documentElement;
-    var height = Math.max( body.scrollHeight, body.offsetHeight, 
+    var height = Math.max( body.scrollHeight, body.offsetHeight,
         html.clientHeight, html.scrollHeight, html.offsetHeight );
     return height;
     }
@@ -150,7 +150,7 @@ function getDocHeight(doc) {
             // here you can make the height, I delete it first, then I make it again
             iFrameID.height = "";
             iFrameID.height = iFrameID.contentWindow.document.body.scrollHeight + "px";
-      }   
+      }
   }
 
 $(document).ready(function() {
@@ -172,10 +172,10 @@ $(document).ready(function() {
 
 
 if ($(window).width() < 1280) {
-   $("#nis-comments").html("<iframe id='ifrm' onload='setIframeHeight(this.id)' scrolling='no' src='../sources/comments.php?nis_key="+nis_key+"&domain="+href+"&news_num="+news_num+"&news_id="+news_id+"&user_id="+user_id+"' width='100%' style='border: 0;'></iframe>");  
+   $("#nis-comments").html("<iframe id='ifrm' onload='setIframeHeight(this.id)' scrolling='no' src='../sources/comments.php?nis_key="+nis_key+"&domain="+href+"&news_num="+news_num+"&news_id="+news_id+"&user_id="+user_id+"' width='100%' style='border: 0;'></iframe>");
 }
 else {
-   $("#nis-comments").html("<iframe id='ifrm' onload='setIframeHeight(this.id)' scrolling='no' src='../sources/comments.php?nis_key="+nis_key+"&domain="+href+"&news_num="+news_num+"&news_id="+news_id+"&user_id="+user_id+"' width='100%' style='border: 0;'></iframe>");  
+   $("#nis-comments").html("<iframe id='ifrm' onload='setIframeHeight(this.id)' scrolling='no' src='../sources/comments.php?nis_key="+nis_key+"&domain="+href+"&news_num="+news_num+"&news_id="+news_id+"&user_id="+user_id+"' width='100%' style='border: 0;'></iframe>");
 }
 
 
@@ -186,15 +186,15 @@ else {
 
 //-->
 
-function checkform() 
+function checkform()
 {
-if(document.myForm_Lost.lost_email.value == "") 
+if(document.myForm_Lost.lost_email.value == "")
 {
-    
+
 }
 else
 {
-	alert("<?=$LANG['alert_FORGOTPASSWORD_title'];?>."); 
+	alert("<?=$LANG['alert_FORGOTPASSWORD_title'];?>.");
     document.myForm_Lost.submit();
 }
 }
@@ -211,7 +211,7 @@ $(".thick").click(function(){
 });
 });
 
-	
+
 $('document').ready(function(){
 
 		$.each($('.article'), function(index, value){
@@ -219,12 +219,12 @@ $('document').ready(function(){
 		});
 
 	});
-	
-	
+
+
 	function item_click_events(item){
 		media_news_gif(item);
 	}
-	
+
 	function media_news_gif(object){
 
 		var gifs = $(object).find('.gif-post .animation');
@@ -241,7 +241,7 @@ $('document').ready(function(){
 			toggle_gif(animated_gif, play_icon);
 		});
 	}
-	
+
 	function toggle_gif(img, icon){
 		if($(img).data('state') == 0){
 			play_gif(img, icon);
@@ -261,10 +261,10 @@ $('document').ready(function(){
 		$(img).data('state', 0);
 		$(icon).fadeIn();
 	}
-	
-	
 
-//<![CDATA[ 
+
+
+//<![CDATA[
 $(function(){
 // Hide Header on on scroll down
 var didScroll;
@@ -282,45 +282,45 @@ setInterval(function() {
         didScroll = false;
     }
 }, 250);
-});//]]>  
+});//]]>
 
 	function fbshare(url) {
 		var left 	= (screen.width/2) - 333,
         	top 	= (screen.height/2) - 175;
-        window.open ("http://www.facebook.com/share.php?u="+url,'Facebook', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=660, height=350, top=' + top + ', left=' + left);        
+        window.open ("http://www.facebook.com/share.php?u="+url,'Facebook', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=660, height=350, top=' + top + ', left=' + left);
     }
-	
+
 	function twittershare(url) {
 		var left 	= (screen.width/2) - 333,
         	top 	= (screen.height/2) - 175;
-        window.open ("http://twitter.com/intent/tweet?source=tweetbutton&original_referer="+url+"&url="+url,'Twitter', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=660, height=350, top=' + top + ', left=' + left);        
+        window.open ("http://twitter.com/intent/tweet?source=tweetbutton&original_referer="+url+"&url="+url,'Twitter', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=660, height=350, top=' + top + ', left=' + left);
     }
-	
+
 	function googleshare(url) {
 		var left 	= (screen.width/2) - 333,
         	top 	= (screen.height/2) - 175;
-        window.open ("https://plus.google.com/share?url="+url,'Google+', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=660, height=350, top=' + top + ', left=' + left);        
+        window.open ("https://plus.google.com/share?url="+url,'Google+', 'toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=660, height=350, top=' + top + ', left=' + left);
     }
-	
+
 function verify_age() {
 
 		//get the id
 		the_id = $(this).attr('class');
 		$.cookie("age",1,{expires:30,path:'/',});
 		location.reload();
-	
+
 	}
-	
+
 $(function(){
 	$("a.up").click(function(){
 	//get the id
 	the_id = $(this).attr('id');
-	
+
 	jQuery("#vote_buttons"+the_id).addClass('up');
-	
-	//fadeout the vote-count 
+
+	//fadeout the vote-count
 	$("span#votes_count"+the_id).fadeOut("fast");
-	
+
 	//the main ajax request
 		$.ajax({
 			type: "POST",
@@ -335,13 +335,13 @@ $(function(){
 			}
 		});
 	});
-	
+
 	$("a.down").click(function(){
 	//get the id
 	the_id = $(this).attr('id');
-	
+
 	jQuery("#vote_buttons"+the_id).removeClass('up');
-	
+
 	//the main ajax request
 		$.ajax({
 			type: "POST",
@@ -355,7 +355,7 @@ $(function(){
 			}
 		});
 	});
-});	
+});
 
 
 $(function () {
@@ -421,7 +421,7 @@ $(function () {
                     if(!utils.klass.has(el, name) && settings.addBodyClasses){
                         el.className += " "+name;
                     }
-					
+
                 },
                 remove: function(el, name){
                     if(settings.addBodyClasses){
@@ -484,7 +484,7 @@ $(function () {
                     } else if (element.attachEvent) {
                         return element.attachEvent("on" + eventName, func);
                     }
-		
+
 
                 },
                 removeEvent: function addEvent(element, eventName, func) {
@@ -564,7 +564,7 @@ $(function () {
                         cache.animatingInterval = setInterval(function() {
                             utils.dispatchEvent('animating');
                         }, 1);
-                        
+
                         utils.events.addEvent(settings.element, utils.transitionCallback(), action.translate.easeCallback);
                         action.translate.x(n);
                     }
@@ -576,7 +576,7 @@ $(function () {
                     if( (settings.disable==='left' && n>0) ||
                         (settings.disable==='right' && n<0)
                     ){ return; }
-                    
+
                     if( !settings.hyperextensible ){
                         if( n===settings.maxPosition || n>settings.maxPosition ){
                             n=settings.maxPosition;
@@ -584,7 +584,7 @@ $(function () {
                             n=settings.minPosition;
                         }
                     }
-                    
+
                     n = parseInt(n, 10);
                     if(isNaN(n)){
                         n = 0;
@@ -596,7 +596,7 @@ $(function () {
                         settings.element.style[cache.vendor+'Transform'] = theTranslate;
                     } else {
                         settings.element.style.width = (win.innerWidth || doc.documentElement.clientWidth)+'px';
-						
+
                         settings.element.style.left = n+'px';
                         settings.element.style.right = '';
                     }
@@ -619,25 +619,25 @@ $(function () {
                     // No drag on ignored elements
                     var target = e.target ? e.target : e.srcElement,
                         ignoreParent = utils.parentUntil(target, 'data-snap-ignore');
-                    
+
                     if (ignoreParent) {
                         utils.dispatchEvent('ignore');
                         return;
                     }
-                    
-                    
+
+
                     if(settings.dragger){
                         var dragParent = utils.parentUntil(target, settings.dragger);
-                        
+
                         // Only use dragger if we're in a closed state
-                        if( !dragParent && 
-                            (cache.translation !== settings.minPosition && 
+                        if( !dragParent &&
+                            (cache.translation !== settings.minPosition &&
                             cache.translation !== settings.maxPosition
                         )){
                             return;
                         }
                     }
-                    
+
                     utils.dispatchEvent('start');
                     settings.element.style[cache.vendor+'Transition'] = '';
                     cache.isDragging = true;
@@ -684,7 +684,7 @@ $(function () {
 
                         if(settings.addBodyClasses){
                             if((absoluteTranslation)>0){
-								
+
 								$('.snap-content').addClass('snap_overflow');
                                 utils.klass.add(doc.body, 'snapjs-left');
                                 utils.klass.remove(doc.body, 'snapjs-right');
@@ -774,7 +774,7 @@ $(function () {
                     }
                 },
                 endDrag: function(e) {
-					
+
                     if (cache.isDragging) {
                         utils.dispatchEvent('end');
                         var translated = action.translate.get.matrix(4);
@@ -803,10 +803,10 @@ $(function () {
                                     action.translate.easeTo(settings.maxPosition); // Open Left
                                 }
                             } else {
-								
+
                                 action.translate.easeTo(0); // Close Left
                             }
-					
+
                             // Revealing Right
                         } else if (cache.simpleStates.opening === 'right') {
                             // Halfway, Flicking, or Too Far Out
@@ -932,8 +932,8 @@ $(function () {
 }).call(this, window, document);
 
 
-<? if($view == 'login') { } else { 
-   if($view == 'signup') { } else {?>	
+<? if($view == 'login') { } else {
+   if($view == 'signup') { } else {?>
     var snapper = new Snap({
         element: document.getElementById('content'),
         disable: 'right'
@@ -946,7 +946,7 @@ var addEvent = function addEvent(element, eventName, func) {
     }
 };
  <? } } ?>
- 
+
 addEvent(document.getElementById('open-left'), 'click', function(){
 	snapper.open('left');
 	$('.snap-content').addClass('snap_overflow');
@@ -971,16 +971,16 @@ addEvent(document.getElementById('open-left'), 'click', function(){
  *
  * Licensed under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
- * 
+ *
  * Copyright 2014, Codrops
  * http://www.codrops.com
  */
 ;( function( window ) {
-	
+
 	'use strict';
 
 	function extend( a, b ) {
-		for( var key in b ) { 
+		for( var key in b ) {
 			if( b.hasOwnProperty( key ) ) {
 				a[key] = b[key];
 			}

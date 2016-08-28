@@ -5,7 +5,7 @@ $cat_query4 = mysql_query("SELECT * FROM categories WHERE id=".$media['cat']."")
 ?>
 <ul class="big-list">
 <li class="article">
-<h2><a href="<?=$root;?><? $cat_query = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row = mysql_fetch_row($cat_query); if($cat_row['2'] == '') { $cat_row = 'other'; }else{ $cat_row=$cat_row['2']; } if($SETTINGS['permalink'] == 'gag') { echo "/gag/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat') { echo "/".$cat_row."/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat_slugify') { echo "/".$cat_row."/".slugify($media['title']); } ?>"><?=$media['product_title']?></a></h2>
+<h2><a id="product_title" href="<?=$root;?><? $cat_query = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_row = mysql_fetch_row($cat_query); if($cat_row['2'] == '') { $cat_row = 'other'; }else{ $cat_row=$cat_row['2']; } if($SETTINGS['permalink'] == 'gag') { echo "/gag/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat') { echo "/".$cat_row."/".$media['news_id']; } elseif($SETTINGS['permalink'] == 'cat_slugify') { echo "/".$cat_row."/".slugify($media['title']); } ?>"><?=$media['product_title']?></a></h2>
 <div class="post-container"><a>
 <? $cat_display = mysql_query("SELECT * FROM categories WHERE id=".$media['cat'].""); $cat_display_row = mysql_fetch_row($cat_display);
    if(($_COOKIE['age'] || $_COOKIE['age'] == '1')) { ?>
@@ -40,6 +40,127 @@ if (mysql_num_rows($query_distinct) ){ echo "up"; } else { } ?>" id='vote_button
 </ul>
 </div><!--end post-function-->
 
+<script>
+
+jQuery(document).ready(function( $ ) {
+
+ buyer_id = $("#member_id").val();
+
+ $( "#buynow" ).click(function() {
+
+   // if user not logged in then redirect to login else click event
+
+   if(buyer_id == "")
+     window.location.href='http://thai-park.com/view/login';
+   else{
+
+    data = new FormData();
+    data.append( 'check_user_info', true);
+    var URL = "../sources/nisgeo-post.php";
+
+     fetch(URL, {
+      method: 'post',
+      mode: 'no-cors',
+      credentials: "same-origin",
+      body: data
+    }).then(function(response){
+
+          return response.json();
+      })  .then(function(json){
+
+        console.log(json.code);
+        console.log(json.alert);
+        if(json.code != 0){
+          alert(json.alert);
+        }
+        else {
+        //  $("#hidden_buy_now").click();
+        //   console.log("clicked");
+
+        $("#buynow").hide();
+        $("#inline1").show();
+
+
+        }
+
+      })
+        .catch(function(error){
+
+
+        });
+
+
+
+
+   }
+
+
+ });
+
+  $( "#cancel" ).click(function() {
+    $("#inline1").hide();
+    $("#buynow").show();
+  });
+
+ $( "#buy_confirm" ).click(function() {
+
+   product_id = $( "#product_id" ).val();
+   seller_id = $( "#seller_id" ).val();
+
+
+   data = new FormData();
+    data.append( 'product_id', product_id );
+   data.append( 'seller_id', seller_id );
+   data.append( 'buyer_id', buyer_id );
+
+   data.append( 'buy_product', true);
+   var URL = "../sources/mouse_auth.php";
+
+    fetch(URL, {
+     method: 'post',
+     mode: 'no-cors',
+     credentials: "same-origin",
+     body: data
+   }).then(function(response){
+
+         return response.json();
+     })  .then(function(json){
+    //   $.fancybox.close();
+    //   console.log(json.code);
+     //	$('#formpart2').show();
+     //	$("#course_id").html(json.html);
+//  return json_encode([ "html" => $html ]);
+// forward to purchases
+   window.location.href='http://www.thai-park.com/view/purchases';
+     })
+       .catch(function(error){
+         $("#inline1").hide();
+         $("#buynow").show();
+
+       });
+
+ });
+
+
+/*    $('.fancybox').fancybox({
+     afterLoad : function() {
+     $("#product_title_modal").text($("#product_title").text());
+
+     },
+       helpers : {
+         title : null,
+         overlay : {
+           css : {
+             'background-color' : '#eee',
+             opacity    : 0.5
+           }
+         }
+       }
+     });*/
+});
+
+</script>
+<input type="hidden" id="member_id" value="<?php echo $members["id"] ?>" >
 <div class="post-stats">
 <p>
 <? $domain = $root.$permalink4;$CommentQuery = mysql_query("SELECT * FROM comments WHERE domain = '".$domain."'");$effective_comments = mysql_num_rows($CommentQuery);$q = "SELECT * FROM votes WHERE news_id = '".$media['id']."'";$r = mysql_query($q);$effective_vote = mysql_num_rows($r);?>
@@ -74,13 +195,33 @@ if (mysql_num_rows($query_distinct) ){ echo "up"; } else { } ?>" id='vote_button
       <?php if($members["id"] == $remove_button2['id']){ ?>
 
       <?php }else{ ?>
-    	<button style="background-color: #53a93f;border-color: #53a93f;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Buy now!</button>
+    	<button  id="buynow" style="background-color: #53a93f;border-color: #53a93f;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">Buy now!</button>
+      <a id="hidden_buy_now" style="display:none" class="fancybox" href="#inline1" title="Lorem ipsum dolor sit amet">test</a>
+      <div id="inline1" style="width:400px;display: none;text-align: center;">
+    		<h3 id="product_title_modal"></h3>
+
+    			<br>
+    		<p>
+          Do you want to buy this product?
+    		</p>
+    			<br>
+    	  <div >
+    			<button id="cancel" style="background-color: red;border-color: red;padding: 5px 20px;font-weight: bold;color: #fff;" type="button">No</button>
+    			<button id="buy_confirm" style="background-color: green;border-color: green;padding: 5px 20px;font-weight: bold;color: #fff;" type="button" >Yes</button>
+
+    		</div>
+
+    	</div>
 <?php } ?>
   	</div>
 
 	</div>
 
  </div>
+
+
+
+
 
  <div style="margin:10px;height: 100px;">
  <div style="padding:20px">
