@@ -78,8 +78,8 @@ $( document ).ready(function() {
   <td class="tdcheck">
   <font><?=$media['date']?></font></td>
 
-  <td><a class="fancybox" href="#inline<?php echo $media['id']; ?>" style="font-size: 12px;color: #fff;width: 52px;background: #3EAC0A;padding: 3px 15px;border: 1px solid #2D8603;border-radius: 5px;cursor: pointer;margin-left: 9px;">Address</a></td>
-  <div id="inline<?php echo $media['id']; ?>" style="width:400px;display: none;text-align: center;">
+  <td><a class="fancybox" href="#inline<?php echo $media['pid']; ?>" style="font-size: 12px;color: #fff;width: 52px;background: #3EAC0A;padding: 3px 15px;border: 1px solid #2D8603;border-radius: 5px;cursor: pointer;margin-left: 9px;">Address</a></td>
+  <div id="inline<?php echo $media['pid']; ?>" style="width:400px;display: none;text-align: center;">
 		<h3 id="product_title_modal"></h3>
 
 			<br>
